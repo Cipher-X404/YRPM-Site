@@ -1,0 +1,491 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yashua Resurrection Power Ministry - Navigation System</title>
+  
+  <!-- Fonts: Playfair Display for Serifs & Plus Jakarta Sans for UI/Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Remix Icons CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- GSAP & Plugins CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Observer.min.js"></script>
+
+  <!-- Three.js CDN (required by hero.js) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+
+  <!-- Dynamic Header -->
+  <header class="header-wrapper" id="mainHeader">
+    <nav class="navbar">
+      
+      <!-- Brand Identity / Logotype -->
+      <a href="#home" class="brand">
+        <div class="logo-mark">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <!-- Structural, geometric abstract holy symbol -->
+            <path d="M50 15 V85 M30 38 H70" />
+            <circle cx="50" cy="38" r="14" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">YASHUA</span>
+          <span class="brand-subtitle">Resurrection Power</span>
+        </div>
+      </a>
+
+      <!-- Primary Core Nav Links (Pre-Scroll Only Visible) -->
+      <div class="nav-links">
+        <a href="#about" class="nav-item">About</a>
+        <a href="#sermons" class="nav-item">Sermons</a>
+        <a href="#ministry" class="nav-item">Ministry</a>
+        <a href="#events" class="nav-item">Events</a>
+      </div>
+
+      <!-- Actions Stack -->
+      <div class="nav-actions">
+        <a href="#donate" class="search-btn" aria-label="Donate">
+          <i class="ri-hand-heart-line"></i>
+        </a>
+        
+        <button class="menu-trigger" id="menuBtn" aria-label="Toggle Navigation Panel">
+          <span class="burger-line top"></span>
+          <span class="burger-line bottom"></span>
+        </button>
+
+        <a href="#donate" class="cta-button">Donate</a>
+      </div>
+
+    </nav>
+  </header>
+
+  <!-- Interactive Megamenu Dropdown -->
+  <div class="megamenu" id="megamenuPanel">
+    
+    <!-- Left Navigation Grid System -->
+    <div class="megamenu-links-grid">
+      
+      <div class="megamenu-col">
+        <h3>Sermons</h3>
+        <ul class="megamenu-list">
+          <li class="megamenu-item">
+            <a href="#divine" data-visual="divine">Divine Service</a>
+          </li>
+          <li class="megamenu-item">
+            <a href="#sabbath" data-visual="sabbath">Sabbath School</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="megamenu-col">
+        <h3>Ministry</h3>
+        <ul class="megamenu-list">
+          <li class="megamenu-item">
+            <a href="#children" data-visual="children">Children Ministry</a>
+          </li>
+          <li class="megamenu-item">
+            <a href="#women" data-visual="women">Women Ministry</a>
+          </li>
+          <li class="megamenu-item">
+            <a href="#youth" data-visual="youth">Youth Ministry</a>
+          </li>
+          <li class="megamenu-item">
+            <a href="#evangelism" data-visual="evangelism">Evangelism Team</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="megamenu-col" style="grid-column: span 2;">
+        <h3>Quick Navigation</h3>
+        <ul class="megamenu-list" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+          <li class="megamenu-item"><a href="#about">About Our Mission</a></li>
+          <li class="megamenu-item"><a href="#events">Upcoming Gatherings</a></li>
+          <li class="megamenu-item"><a href="#contact">Connect / Contact Us</a></li>
+          <li class="megamenu-item"><a href="#location">Find a Worship Center</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Right Interaction Presentation Visual (Hover Sensitive) -->
+    <div class="megamenu-visual-panel">
+      <div class="visual-content">
+        <h2 id="megamenuTagline">Faith is always <span>essential</span>. Now it is accessible, too.</h2>
+        <a href="#learn-more" class="action-link">
+          <span>Learn more</span> <i class="ri-arrow-right-line"></i>
+        </a>
+      </div>
+      
+      <!-- Container for dynamic script based switching -->
+      <div class="visual-image-container">
+        <!-- Default Fallback Dynamic Visual asset -->
+        <img src="https://images.unsplash.com/photo-1544427920-c49ccfb85579?auto=format&fit=crop&w=400&q=80" alt="Faith Journey" class="active" id="img-default">
+        
+        <!-- Preloaded assets for dynamic transition animations -->
+        <img src="https://images.unsplash.com/photo-1438032005730-c779502df39b?auto=format&fit=crop&w=400&q=80" alt="Divine Service" id="img-divine">
+        <img src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=400&q=80" alt="Sabbath School" id="img-sabbath">
+        <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?auto=format&fit=crop&w=400&q=80" alt="Children Ministry" id="img-children">
+        <img src="https://images.unsplash.com/photo-1519491050282-cf00c82424b4?auto=format&fit=crop&w=400&q=80" alt="Women Ministry" id="img-women">
+        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=400&q=80" alt="Youth Ministry" id="img-youth">
+        <img src="https://images.unsplash.com/photo-1461532252227-d40486940e25?auto=format&fit=crop&w=400&q=80" alt="Evangelism Team" id="img-evangelism">
+      </div>
+      <div class="visual-overlay-ring"></div>
+    </div>
+
+  </div>
+
+
+  <!-- HERO SECTION -->
+
+  <!-- ========================================
+       HERO VIEWPORT
+  ======================================== -->
+  <section id="hero-viewport">
+    <!-- Three.js Canvas Container -->
+    <div id="webgl-stage"></div>
+
+    <!-- Transition Overlay for Clean Wipe -->
+    <div id="transition-overlay"></div>
+
+    <!-- Foreground Typographic & UI Overlay -->
+    <div class="hero-ui-container">
+      <div class="quadrant top-left">
+        <h1 class="display-title title-yashua">YASHUA</h1>
+      </div>
+
+      <div class="quadrant bottom-right">
+        <h1 class="display-title title-resurrection">RESURRECTION</h1>
+      </div>
+
+      <div class="quadrant bottom-left">
+        <p class="context-subtitle">POWER MINISTRY</p>
+      </div>
+
+      <div class="quadrant center-right">
+        <div class="magnetic-cta" data-magnetic>
+          <div class="cta-circle">
+            <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 5v14M5 12l7 7 7-7" />
+            </svg>
+            <span class="cta-text">SCROLL TO EXPERIENCE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+
+  <section id="about-section" aria-label="About Yashua Resurrection Ministry">
+    <!-- BACKGROUND VIDEO -->
+    <video
+      class="about-bg-video"
+      src="https://videos.pexels.com/video-files/37639711/15954592_3840_2160_24fps.mp4"
+      autoplay loop muted playsinline preload="auto"
+      aria-hidden="true"
+    ></video>
+
+    <!-- GRADIENT OVERLAY -->
+    <div class="about-gradient-overlay" aria-hidden="true"></div>
+
+    <!-- GRAIN TEXTURE -->
+    <div class="about-grain-layer" aria-hidden="true"></div>
+
+    <!-- VERTICAL GOLD ACCENT LINE -->
+    <div class="about-accent-line" id="aboutAccentLine" aria-hidden="true"></div>
+
+    <!-- CORNER LABEL -->
+    <div class="about-corner-label" id="aboutCornerLabel" aria-hidden="true">
+      <span>Est. Serving</span>
+      <strong>The Kingdom</strong>
+    </div>
+
+    <!-- FULL-SECTION LINK OVERLAY (desktop) -->
+    <a href="about.html" class="about-section-link-overlay" aria-label="Go to About Us page" tabindex="0"></a>
+
+    <!-- CONTENT -->
+    <div class="about-content-wrapper">
+      <div class="about-text-block">
+        <div class="about-left-col">
+          <!-- EYEBROW -->
+          <div class="about-eyebrow" aria-hidden="true">
+            <div class="about-eyebrow-line" id="aboutEyebrowLine"></div>
+            <span class="about-eyebrow-text" id="aboutEyebrowText">Who We Are</span>
+          </div>
+
+          <!-- HEADLINE STACK -->
+          <div class="about-headline-stack" role="heading" aria-level="2" aria-label="Yashua Resurrection Ministry INC">
+            <div class="about-headline-line" id="aboutHl0"><span>Yashua.</span></div>
+            <div class="about-headline-line about-outline" id="aboutHl1"><span>Resurrection.</span></div>
+            <div class="about-headline-line" id="aboutHl2"><span>Ministry.</span></div>
+            <div class="about-headline-line about-gold" id="aboutHl3"><span>INC.</span></div>
+          </div>
+        </div>
+
+        <div class="about-right-col">
+          <!-- HORIZONTAL DIVIDER -->
+          <div class="about-divider" id="aboutDivider"></div>
+
+          <!-- BODY COPY -->
+          <p class="about-body-copy" id="aboutBodyCopy">
+            A community rooted in the resurrection power of Yashua — gathering to encounter
+            the living God, to be transformed by His presence, and to carry His love
+            into every corner of the earth. We exist where faith becomes fire,
+            and ordinary lives are made extraordinary by grace.
+          </p>
+
+          <!-- MOBILE CTA (hidden on desktop) -->
+          <div class="about-mobile-cta" id="aboutMobileCta">
+            <a href="about.html">
+            Our Mission
+              <span class="about-btn-icon" aria-hidden="true">
+                <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                  <path d="M1 7L7 1M7 1H2M7 1V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCROLL INDICATOR -->
+    <div class="about-scroll-indicator" id="aboutScrollIndicator" aria-hidden="true">
+      <div class="about-scroll-mouse"></div>
+      <span>Scroll to explore</span>
+    </div>
+  </section>
+
+  <!-- FLOATING CURSOR BUTTON (fixed, outside section to avoid stacking-context clipping) -->
+  <div id="about-cursor-btn" aria-hidden="true">
+    About Us
+    <span class="about-btn-icon">
+      <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+        <path d="M1 7L7 1M7 1H2M7 1V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </div>
+
+  <!-- WEEKLY RHYTHM SECTION -->
+  <section id="weekly-rhythm">
+    <!-- HEADER -->
+    <div class="section-header">
+      <div class="particles-container" aria-hidden="true"></div>
+      <span class="overline">Sacred Calendar · Seasons of Encounter</span>
+      <span class="gold-rule" aria-hidden="true"></span>
+      <h2 class="section-headline">Rhythms of the Spirit</h2>
+      <p class="subheading">Every gathering is a step closer to grace.</p>
+    </div>
+
+    <!-- CARD TRACK -->
+    <div class="card-track-wrapper">
+      <div class="card-track">
+
+        <!-- CARD 1 -->
+        <div class="rhythm-card" data-day="Thursday" style="--card-img:url('images/faith-clinic.jpg'); --card-tint:#3d1200">
+          <div class="card-top-area">
+            <span class="day-badge">Thursday</span>
+            <span class="today-badge">Today</span>
+            <span class="countdown-badge"></span>
+          </div>
+          <div class="card-icon-area">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M5 9h14" stroke="white" stroke-width="2"/>
+              <circle cx="12" cy="9" r="6" stroke="var(--antique-gold)" stroke-width="1.5" stroke-dasharray="4 2"/>
+              <path d="M12 9m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" fill="white"/>
+            </svg>
+          </div>
+          <div class="card-bottom-area">
+            <p class="card-time">THURSDAY · 9:00 AM – 12:00 PM</p>
+            <h3 class="card-title">Faith Clinic</h3>
+            <p class="card-desc">Healing for body, soul, and spirit — open doors, open arms, every week.</p>
+            <a href="#" class="btn-learn">Learn More <span class="arrow">→</span></a>
+          </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="rhythm-card" data-day="Tuesday" style="--card-img:url('images/bible-study.jpg'); --card-tint:#0d0d3d">
+          <div class="card-top-area">
+            <span class="day-badge">Tuesday</span>
+            <span class="today-badge">Today</span>
+            <span class="countdown-badge"></span>
+          </div>
+          <div class="card-icon-area">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" fill="rgba(255,255,255,0.1)" stroke="white" stroke-width="1.5"/>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" fill="rgba(255,255,255,0.1)" stroke="white" stroke-width="1.5"/>
+              <path d="M12 5v13" stroke="var(--antique-gold)" stroke-width="2"/>
+              <path d="M3 6h4M3 10h4M17 6h4M17 10h4" stroke="white" stroke-width="1" opacity="0.6"/>
+            </svg>
+          </div>
+          <div class="card-bottom-area">
+            <p class="card-time">TUESDAY · 4:00 PM – 6:00 PM</p>
+            <h3 class="card-title">Bible Study</h3>
+            <p class="card-desc">Grow deeper in the Word — every question welcome, every seeker at home.</p>
+            <a href="#" class="btn-learn">Learn More <span class="arrow">→</span></a>
+          </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="rhythm-card" data-day="Saturday" style="--card-img:url('images/sabbath-school.jpg'); --card-tint:#003d1a">
+          <div class="card-top-area">
+            <span class="day-badge">Saturday</span>
+            <span class="today-badge">Today</span>
+            <span class="countdown-badge"></span>
+          </div>
+          <div class="card-icon-area">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v2M8 4h8M9 6v12a3 3 0 0 0 6 0V6H9z" stroke="white" stroke-width="1.5"/>
+              <path d="M12 10c-1 1-1.5 2-1.5 3s.7 2 1.5 2 1.5-1 1.5-2-.5-2-1.5-3z" fill="var(--antique-gold)"/>
+              <path d="M4 12h2M18 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6l-1.4 1.4M7 17l-1.4 1.4" stroke="var(--antique-gold)" stroke-width="1" opacity="0.8"/>
+            </svg>
+          </div>
+          <div class="card-bottom-area">
+            <p class="card-time">SATURDAY · 8:00 AM – 9:00 AM</p>
+            <h3 class="card-title">Sabbath School</h3>
+            <p class="card-desc">Begin the holy rest day grounded in Scripture, together as one community.</p>
+            <a href="#" class="btn-learn">Learn More <span class="arrow">→</span></a>
+          </div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="rhythm-card" data-day="Saturday" style="--card-img:url('images/divine-service.jpg'); --card-tint:#3d2800">
+          <div class="card-top-area">
+            <span class="day-badge">Saturday</span>
+            <span class="today-badge">Today</span>
+            <span class="countdown-badge"></span>
+          </div>
+          <div class="card-icon-area">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" stroke="rgba(251, 169, 44, 0.25)" stroke-width="1" stroke-dasharray="2 2"/>
+              <path d="M20 4c-3 0-6 2-8 5-2-3-5-5-8-5 1 4 3 7 6 9v3l3-2 3 2v-3c3-2 5-5 6-9z" fill="white" stroke="white" stroke-width="1.2"/>
+              <circle cx="12" cy="8" r="1" fill="var(--antique-gold)"/>
+            </svg>
+          </div>
+          <div class="card-bottom-area">
+            <p class="card-time">SATURDAY · 9:00 AM – As the Spirit Leads</p>
+            <h3 class="card-title">Divine Service</h3>
+            <p class="card-desc">Our Sabbath worship — where heaven meets earth and every heart finds rest.</p>
+            <a href="#" class="btn-learn">Learn More <span class="arrow">→</span></a>
+          </div>
+        </div>
+
+        <!-- CARD 5 (NEW) -->
+        <div class="rhythm-card" data-day="Covenant Prayer" style="--card-img:url('images/covenant-prayer.jpg'); --card-tint:#1a0033">
+          <div class="card-top-area">
+            <span class="day-badge">Monthly</span>
+            <span class="today-badge">Active</span>
+            <span class="covenant-day-badge" style="display:none; background:#FFFFFF; color:#000; padding:6px 16px; border-radius:100px; font-family:var(--font-sans); font-size:13px; font-weight:600; letter-spacing:0.05em; white-space:nowrap; margin-right:6px;"></span>
+            <span class="countdown-badge"></span>
+          </div>
+          <div class="card-icon-area">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="9" cy="15" rx="5" ry="2.5" stroke="var(--antique-gold)" stroke-width="1.5" fill="none"/>
+              <ellipse cx="15" cy="15" rx="5" ry="2.5" stroke="white" stroke-width="1.5" fill="none"/>
+              <path d="M12 3v8M9.5 5.5l2.5-2.5 2.5 2.5" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M8 8s2-3 4-3 4 3 4 3M6 11s3-4 6-4 6 4 6 4" stroke="var(--antique-gold)" stroke-width="1" opacity="0.7"/>
+            </svg>
+          </div>
+          <div class="card-bottom-area">
+            <p class="card-time">LAST DAY · 1ST & 2ND OF NEW MONTH</p>
+            <h3 class="card-title">Covenant Prayer</h3>
+            <p class="card-desc">Confronting the months ahead with prayer — standing in alignment to receive the double portion of blessings.</p>
+            <a href="#" class="btn-learn">Learn More <span class="arrow">→</span></a>
+          </div>
+        </div>
+
+        <!-- CARD 6 (NEW) -->
+        <div class="rhythm-card" data-day="Thanksgiving" style="--card-img:url('images/thanksgiving.jpg'); --card-tint:#331a00">
+          <div class="card-top-area">
+            <span class="day-badge">Annual</span>
+            <span class="today-badge">Active</span>
+            <span class="countdown-badge"></span>
+          </div>
+          <div class="card-icon-area">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 3h12v5c0 3.3-2.7 6-6 6S6 11.3 6 8V3z" fill="rgba(255,255,255,0.1)" stroke="white" stroke-width="1.5"/>
+              <path d="M12 14v6M8 20h8" stroke="white" stroke-width="1.5"/>
+              <path d="M12 2c0 2-2 3-2 3s2 .5 2 1.5c0-1 2-1.5 2-1.5s-2-1-2-3z" fill="var(--antique-gold)"/>
+              <path d="M9 4c0 1.5-1.5 2-1.5 2s1.5 .4 1.5 1.2c0-.8 1.5-1.2 1.5-1.2s-1.5-.7-1.5-2z" fill="var(--antique-gold)" opacity="0.8"/>
+              <path d="M15 4c0 1.5 1.5 2 1.5 2s-1.5 .4-1.5 1.2c0-.8-1.5-1.2-1.5-1.2s1.5-.7 1.5-2z" fill="var(--antique-gold)" opacity="0.8"/>
+            </svg>
+          </div>
+          <div class="card-bottom-area">
+            <p class="card-time">FEBRUARY · ANNUAL SOLEMNITY</p>
+            <h3 class="card-title">Thanksgiving</h3>
+            <p class="card-desc">A harvest of gratitude and joy — our annual gathering to celebrate the faithfulness of God in every season.</p>
+            <a href="#" class="btn-learn">Learn More <span class="arrow">→</span></a>
+          </div>
+        </div>
+
+        <!-- CARD 7 (NEW) -->
+        <div class="rhythm-card" data-day="Passover" style="--card-img:url('images/passover.jpg'); --card-tint:#3d000d">
+          <div class="card-top-area">
+            <span class="day-badge">April 14</span>
+            <span class="today-badge">Active</span>
+            <span class="countdown-badge"></span>
+          </div>
+          <div class="card-icon-area">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 20V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v12" stroke="white" stroke-width="1.5"/>
+              <path d="M4 6h16" stroke="var(--antique-gold)" stroke-width="2.5" stroke-linecap="round"/>
+              <circle cx="12" cy="15" r="3" stroke="white" stroke-width="1"/>
+              <line x1="12" y1="12" x2="12" y2="15" stroke="var(--antique-gold)" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="card-bottom-area">
+            <p class="card-time">APRIL 14 – 20 · HOLY CONVOCATION</p>
+            <h3 class="card-title">Passover & Unleavened Bread</h3>
+            <p class="card-desc">Commemorating redemption and deliverance — walking in purity and remembering the sacrifice that set us free.</p>
+            <a href="#" class="btn-learn">Learn More <span class="arrow">→</span></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- NAV ARROWS -->
+    <div class="nav-arrows">
+      <button class="nav-arrow nav-prev" aria-label="Previous card">←</button>
+      <button class="nav-arrow nav-next" aria-label="Next card">→</button>
+    </div>
+
+    <!-- SHIMMER CONNECTOR -->
+    <div class="shimmer-connector" aria-hidden="true"></div>
+
+    <!-- CTA -->
+    <div class="cta-strip">
+      <span class="cta-gold-rule" aria-hidden="true"></span>
+      <p class="cta-heading">Every week, a new opportunity to grow.</p>
+      <p class="cta-sub">All are welcome. No reservation needed.</p>
+    </div>
+  </section>
+
+  <!-- Core Nav Logic -->
+  <script src="js/main.js"></script>
+
+  <!-- Hero Scripts -->
+  <script src="js/hero.js" defer></script>
+
+  <!-- About Section Scripts -->
+  <script src="js/about.js" defer></script>
+
+
+</body>
+</html>
+
+
