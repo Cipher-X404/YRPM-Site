@@ -50,10 +50,10 @@
 
       <!-- Primary Core Nav Links (Pre-Scroll Only Visible) -->
       <div class="nav-links">
-        <a href="#about" class="nav-item">About</a>
-        <a href="#sermons" class="nav-item">Sermons</a>
-        <a href="#ministry" class="nav-item">Ministry</a>
-        <a href="#events" class="nav-item">Events</a>
+        <a href="about.html" class="nav-item">About</a>
+        <a href="sermons.html" class="nav-item">Sermons</a>
+        <a href="ministries.html" class="nav-item">Ministry</a>
+        <a href="events.html" class="nav-item">Events</a>
       </div>
 
       <!-- Actions Stack -->
@@ -83,10 +83,10 @@
         <h3>Sermons</h3>
         <ul class="megamenu-list">
           <li class="megamenu-item">
-            <a href="#divine" data-visual="divine">Divine Service</a>
+            <a href="sermons.html#divineSermons" data-visual="divine">Divine Service</a>
           </li>
           <li class="megamenu-item">
-            <a href="#sabbath" data-visual="sabbath">Sabbath School</a>
+            <a href="sermons.html#sabbathSermons" data-visual="sabbath">Sabbath School</a>
           </li>
         </ul>
       </div>
@@ -95,16 +95,16 @@
         <h3>Ministry</h3>
         <ul class="megamenu-list">
           <li class="megamenu-item">
-            <a href="#children" data-visual="children">Children Ministry</a>
+            <a href="ministries.html" data-visual="children">Children Ministry</a>
           </li>
           <li class="megamenu-item">
-            <a href="#women" data-visual="women">Women Ministry</a>
+            <a href="ministries.html" data-visual="women">Women Ministry</a>
           </li>
           <li class="megamenu-item">
-            <a href="#youth" data-visual="youth">Youth Ministry</a>
+            <a href="ministries.html" data-visual="youth">Youth Ministry</a>
           </li>
           <li class="megamenu-item">
-            <a href="#evangelism" data-visual="evangelism">Evangelism Team</a>
+            <a href="ministries.html" data-visual="evangelism">Evangelism Team</a>
           </li>
         </ul>
       </div>
@@ -112,10 +112,10 @@
       <div class="megamenu-col" style="grid-column: span 2;">
         <h3>Quick Navigation</h3>
         <ul class="megamenu-list" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-          <li class="megamenu-item"><a href="#about">About Our Mission</a></li>
-          <li class="megamenu-item"><a href="#events">Upcoming Gatherings</a></li>
-          <li class="megamenu-item"><a href="#contact">Connect / Contact Us</a></li>
-          <li class="megamenu-item"><a href="#location">Find a Worship Center</a></li>
+          <li class="megamenu-item"><a href="about.html">About Our Mission &amp; History</a></li>
+          <li class="megamenu-item"><a href="events.html">Upcoming Gatherings &amp; Feasts</a></li>
+          <li class="megamenu-item"><a href="sermons.html">Spoken Word Library</a></li>
+          <li class="megamenu-item"><a href="index.html#visit">Plan Your Visit</a></li>
         </ul>
       </div>
 
@@ -150,42 +150,117 @@
 
 
   <!-- HERO SECTION -->
+  <section id="hero-section" class="hero-section">
+    <div class="hero-container">
+      
+      <!-- Left Column (Content Stack - ~45% width) -->
+      <div class="hero-left-col">
+        
+        <!-- 1. Main Headline -->
+        <h1 class="hero-headline">
+          <span class="headline-line">Encounter Timeless Faith</span>
+          <span class="headline-line">Experience Resurrection Power</span>
+        </h1>
 
-  <!-- ========================================
-       HERO VIEWPORT
-  ======================================== -->
-  <section id="hero-viewport">
-    <!-- Three.js Canvas Container -->
-    <div id="webgl-stage"></div>
+        <!-- 2. Sub-headline -->
+        <p class="hero-subheadline">
+          Welcome to Yashua Resurrection Power ministry (YRPM). Discover a community grounded in the Word, empowered by the Holy Spirit, and devoted to sharing the love of Christ in every season of life.
+        </p>
 
-    <!-- Transition Overlay for Clean Wipe -->
-    <div id="transition-overlay"></div>
+        <!-- 3. Primary Call-to-Action (CTA) Button -->
+        <div class="hero-cta-wrapper">
+          <a href="#visit" class="hero-pill-btn" aria-label="Plan Your Visit">
+            <span class="hero-btn-text">Plan Your Visit</span>
+            <span class="hero-btn-circle">
+              <svg class="hero-btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </span>
+          </a>
+        </div>
 
-    <!-- Foreground Typographic & UI Overlay -->
-    <div class="hero-ui-container">
-      <div class="quadrant top-left">
-        <h1 class="display-title title-yashua">YASHUA</h1>
-      </div>
+        <!-- Secondary Cluster: Image Container + Text Block + Circular Rotating Badge -->
+        <div class="hero-bottom-group">
+          <div class="hero-secondary-card">
+            <!-- 4. Secondary Image Container -->
+            <div class="hero-secondary-img-wrap">
+              <img src="images/open-bible-cross.jpg" alt="Open Holy Bible resting next to a wooden cross" class="hero-secondary-img" />
+            </div>
+            <!-- 5. Secondary Text Block -->
+            <div class="hero-secondary-text">
+              <h3 class="secondary-title">Sunday Worship Experience</h3>
+              <p class="secondary-subtitle">Faith. Fellowship. Transformation.</p>
+            </div>
+          </div>
 
-      <div class="quadrant bottom-right">
-        <h1 class="display-title title-resurrection">RESURRECTION</h1>
-      </div>
-
-      <div class="quadrant bottom-left">
-        <p class="context-subtitle">POWER MINISTRY</p>
-      </div>
-
-      <div class="quadrant center-right">
-        <div class="magnetic-cta" data-magnetic>
-          <div class="cta-circle">
-            <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <path d="M12 5v14M5 12l7 7 7-7" />
+          <!-- 6. Circular Rotating Badge -->
+          <div class="hero-rotating-badge" aria-label="Join Us Sunday - Watch Live">
+            <svg class="badge-svg-ring" viewBox="0 0 160 160">
+              <defs>
+                <path id="heroBadgePath" d="M 80, 80 m -56, 0 a 56,56 0 1,1 112,0 a 56,56 0 1,1 -112,0" fill="none" />
+              </defs>
+              <text class="badge-text">
+                <textPath href="#heroBadgePath" startOffset="0%">
+                  JOIN US SUNDAY • JOIN US SUNDAY • 
+                </textPath>
+              </text>
             </svg>
-            <span class="cta-text">SCROLL TO EXPERIENCE</span>
+            <div class="badge-inner-core">
+              <svg class="badge-core-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+              <span class="badge-core-text">Watch Live</span>
+            </div>
           </div>
         </div>
+
       </div>
+
+      <!-- Right Column (Main Feature Image - ~55% width) -->
+      <div class="hero-right-col">
+        <!-- 1. Main Image Container (Asymmetrical Custom Organic Shape) -->
+        <div class="hero-main-shape-wrap">
+          <div class="hero-carousel" id="heroCarousel">
+            <div class="hero-slide active">
+              <img src="images/worship-congregation-hands.jpg" alt="Vibrant congregation worshipping with hands raised" />
+            </div>
+            <div class="hero-slide">
+              <img src="images/pastor-sermon.jpg" alt="Pastor delivering an inspiring sermon" />
+            </div>
+            <div class="hero-slide">
+              <img src="images/divine-service.jpg" alt="Church sanctuary worship gathering" />
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Pagination Dots (Image Slider Indicators) -->
+        <div class="hero-pagination-dots" role="tablist" aria-label="Hero carousel pagination">
+          <button class="hero-dot active" role="tab" aria-selected="true" aria-label="Slide 1"></button>
+          <button class="hero-dot" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+          <button class="hero-dot" role="tab" aria-selected="false" aria-label="Slide 3"></button>
+        </div>
+      </div>
+
     </div>
+
+    <!-- SVG Mask ClipPath Definition (Smooth S-Curve left edge, flat top/right, flush bottom) -->
+    <svg width="0" height="0" style="position: absolute; pointer-events: none;" aria-hidden="true">
+      <defs>
+        <clipPath id="heroOrganicMask" clipPathUnits="objectBoundingBox">
+          <path d="M 0.22,0 
+                   L 1,0 
+                   L 1,0.985 
+                   Q 1,1 0.985,1 
+                   L 0.38,1 
+                   C 0.22,1 0.14,0.88 0.16,0.76 
+                   C 0.18,0.62 0.26,0.52 0.24,0.38 
+                   C 0.20,0.20 0.08,0.06 0,0.08 
+                   C 0,0.02 0.08,0 0.22,0 Z" />
+        </clipPath>
+      </defs>
+    </svg>
   </section>
 
   <!-- ABOUT SECTION -->

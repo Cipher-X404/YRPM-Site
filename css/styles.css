@@ -423,188 +423,437 @@ body {
 
 
 
-/* HERO VIEWPORT */
-#hero-viewport {
-  width: 100vw;
-  height: 100vh;
+/* =============================================================
+   HERO SECTION (Pure White Split-Layout, Editorial Church UI)
+   ============================================================= */
+.hero-section {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #FFFFFF;
   position: relative;
   overflow: hidden;
-  background: var(--rich-burgundy);
-  z-index: 5;
+  display: flex;
+  align-items: center;
+  padding: 120px 0 60px 0;
+  box-sizing: border-box;
 }
 
-/* WEBGL STAGE */
-#webgl-stage {
-  position: absolute;
-  top: 0;
-  left: 0;
+.hero-container {
   width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
 }
 
-#webgl-stage canvas {
+/* -------------------------------------------------------------
+   Left Column: Content Stack (~45% width, aligned to left margin)
+   ------------------------------------------------------------- */
+.hero-left-col {
+  flex: 0 0 45%;
+  max-width: 45%;
+  padding-left: clamp(24px, 5.5vw, 90px);
+  padding-right: clamp(20px, 3.5vw, 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  box-sizing: border-box;
+  z-index: 10;
+}
+
+/* 1. Main Headline */
+.hero-headline {
+  margin: 0 0 22px 0;
+  padding-top: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.headline-line {
+  display: block;
+  font-size: clamp(2.4rem, 3.6vw, 4.3rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  color: #000000;
+}
+
+/* 2. Sub-headline */
+.hero-subheadline {
+  margin: 0 0 32px 0;
+  font-size: clamp(0.92rem, 1.05vw, 1.06rem);
+  font-weight: 400;
+  line-height: 1.65;
+  color: #64748b; /* Muted slate gray */
+  text-align: left;
+  max-width: 530px;
+}
+
+/* 3. Primary Call-to-Action (CTA) Button */
+.hero-cta-wrapper {
+  margin-bottom: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.hero-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 7px 8px 7px 28px;
+  background-color: #111111;
+  color: #ffffff;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+}
+
+.hero-pill-btn:hover {
+  background-color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+}
+
+.hero-btn-text {
+  font-size: 0.98rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.hero-btn-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.hero-pill-btn:hover .hero-btn-circle {
+  transform: translate(2px, -2px);
+}
+
+.hero-btn-arrow {
+  width: 17px;
+  height: 17px;
   display: block;
 }
 
-/* TRANSITION OVERLAY */
-#transition-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000000;
-  opacity: 0;
-  z-index: 3;
-  pointer-events: none;
-}
-
-/* HERO UI CONTAINER */
-.hero-ui-container {
+/* 4 & 5 & 6. Bottom Interactive Stack + Rotating Badge */
+.hero-bottom-group {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.5vw, 36px);
   position: relative;
   width: 100%;
+}
+
+.hero-secondary-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* 4. Secondary Image Container */
+.hero-secondary-img-wrap {
+  width: clamp(210px, 17vw, 260px);
+  height: clamp(130px, 10.5vw, 160px);
+  border-radius: 26px; /* heavily rounded squircle */
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  background-color: #e5e5e5;
+  margin-bottom: 14px;
+  flex-shrink: 0;
+}
+
+.hero-secondary-img {
+  width: 100%;
   height: 100%;
-  z-index: 2;
-  pointer-events: none;
-  padding: 0 4vw;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.quadrant {
-  position: absolute;
-  pointer-events: none;
+.hero-secondary-card:hover .hero-secondary-img {
+  transform: scale(1.05);
 }
 
-/* Top-Left */
-.top-left {
-  top: 25vh;
-  left: 4vw;
+/* 5. Secondary Text Block */
+.hero-secondary-text {
+  text-align: left;
 }
 
-.display-title {
-  font-family: var(--font-serif);
-  font-size: clamp(4.5rem, 11vw, 12rem);
-  font-weight: 900;
-  color: var(--ivory-cream);
-  line-height: 0.85;
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
+.secondary-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #000000;
+  margin: 0 0 3px 0;
+  line-height: 1.25;
 }
 
-.title-yashua {
-  transform-origin: top left;
-  will-change: transform, opacity;
+.secondary-subtitle {
+  font-size: 0.83rem;
+  font-weight: 500;
+  color: #64748b; /* Muted slate gray */
+  margin: 0;
+  line-height: 1.35;
 }
 
-/* Bottom-Right */
-.bottom-right {
-  bottom: 20vh;
-  right: 4vw;
-  text-align: right;
-}
-
-.title-resurrection {
-  transform-origin: bottom right;
-  will-change: transform, opacity;
-}
-
-/* Bottom-Left */
-.bottom-left {
-  bottom: 12vh;
-  left: 4vw;
-}
-
-.context-subtitle {
-  font-family: var(--font-sans);
-  font-size: 1rem;
-  letter-spacing: 0.25em;
-  color: var(--dusty-blush);
-  font-weight: 600;
-  text-transform: uppercase;
-  will-change: opacity;
-}
-
-/* Center-Right Magnetic CTA */
-.center-right {
-  top: 40%;
-  right: 4vw;
-  transform: translateY(-50%);
-  pointer-events: auto;
-}
-
-.magnetic-cta {
+/* 6. Circular Rotating Badge */
+.hero-rotating-badge {
+  position: relative;
+  width: clamp(118px, 9vw, 136px);
+  height: clamp(118px, 9vw, 136px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
   cursor: pointer;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, opacity;
+  margin-bottom: 26px; /* visually aligns with middle/bottom of secondary image */
 }
 
-.cta-circle {
-  width: clamp(150px, 10vw, 140px);
-  height: clamp(150px, 10vw, 140px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+.badge-svg-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: heroBadgeRotate 16s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes heroBadgeRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hero-rotating-badge:hover .badge-svg-ring {
+  animation-duration: 8s;
+}
+
+.badge-text {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  fill: #000000;
+}
+
+.badge-inner-core {
+  width: clamp(66px, 5.2vw, 76px);
+  height: clamp(66px, 5.2vw, 76px);
+  background-color: #111111; /* Dark charcoal/black */
   border-radius: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  transition:
-    border-color 0.4s ease,
-    box-shadow 0.4s ease;
-}
-
-.magnetic-cta:hover .cta-circle {
-  border-color: rgba(251, 169, 44, 0.4);
-  box-shadow: 0 0 30px rgba(251, 169, 44, 0.1);
-}
-
-.arrow-svg {
-  width: 50px;
-  height: 50px;
-  color: var(--antique-gold);
-  animation: arrowBounce 2s ease-in-out infinite;
-}
-
-@keyframes arrowBounce {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(4px);
-  }
-}
-
-.cta-text {
-  font-family: var(--font-sans);
-  font-size:0.5rem;
-  font-weight: 800;
-  letter-spacing: 0.2em;
-  color: var(--antique-gold);
-  text-transform: uppercase;
+  color: #ffffff;
+  z-index: 2;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  padding: 6px;
+  box-sizing: border-box;
   text-align: center;
-  line-height: 1.4;
-  max-width: 70px;
 }
 
-/* SUBTLE NOISE/GRAIN OVERLAY */
-#hero-viewport::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
+.hero-rotating-badge:hover .badge-inner-core {
+  transform: scale(1.06);
+  background-color: #000000;
+}
+
+.badge-core-arrow {
+  width: 13px;
+  height: 13px;
+  display: block;
+  stroke: #ffffff;
+  margin-bottom: 3px;
+  transition: transform 0.25s ease;
+}
+
+.hero-rotating-badge:hover .badge-core-arrow {
+  transform: translate(2px, -2px);
+}
+
+.badge-core-text {
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+/* -------------------------------------------------------------
+   Right Column: Main Feature Image (~55% width, bleeding off right edge)
+   ------------------------------------------------------------- */
+.hero-right-col {
+  flex: 0 0 55%;
+  max-width: 55%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-right: 0;
+  box-sizing: border-box;
+}
+
+/* 1. Main Image Container (Asymmetrical Custom Organic Shape) */
+.hero-main-shape-wrap {
+  width: 100%;
+  height: clamp(520px, 78vh, 760px);
+  position: relative;
+  overflow: hidden;
+  /* Organic wavy S-curve on the left edge, straight on top & right, flush bottom with slight corner round */
+  clip-path: url(#heroOrganicMask);
+  -webkit-clip-path: url(#heroOrganicMask);
+  background-color: #1a1a1a;
+}
+
+.hero-carousel {
+  position: relative;
   width: 100%;
   height: 100%;
-  z-index: 4;
-  pointer-events: none;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 256px 256px;
 }
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  transform: scale(1.04);
+}
+
+.hero-slide.active {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  display: block;
+}
+
+/* 2. Pagination Dots (Image Slider Indicators) */
+.hero-pagination-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.hero-dot {
+  width: 32px;
+  height: 6px;
+  border-radius: 9999px; /* pill-shaped dash */
+  background-color: #e2e8f0; /* Light gray */
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.35s ease, width 0.35s ease, transform 0.2s ease;
+  outline: none;
+}
+
+.hero-dot:hover {
+  background-color: #cbd5e1;
+}
+
+.hero-dot.active {
+  background-color: #ef4444; /* Vibrant Red active state */
+  width: 44px;
+}
+
+/* -------------------------------------------------------------
+   Hero Responsiveness
+   ------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .hero-section {
+    min-height: auto;
+    padding: 110px 0 60px 0;
+  }
+
+  .hero-container {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .hero-left-col {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 32px;
+  }
+
+  .hero-right-col {
+    flex: 0 0 100%;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .hero-main-shape-wrap {
+    height: 520px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-section {
+    padding: 100px 0 40px 0;
+  }
+
+  .hero-left-col {
+    padding: 0 20px;
+  }
+
+  .headline-line {
+    font-size: 2.2rem;
+  }
+
+  .hero-subheadline {
+    font-size: 0.95rem;
+  }
+
+  .hero-bottom-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .hero-secondary-img-wrap {
+    width: 190px;
+    height: 120px;
+  }
+
+  .hero-main-shape-wrap {
+    height: 380px;
+  }
+}
+
 /* ─── ABOUT SECTION ─────────────────────────────────────────── */
 #about-section {
   position: relative;
@@ -997,58 +1246,7 @@ body {
     );
   }
 
-  /* Hero Section Responsiveness */
-  .hero-ui-container {
-    padding: 0 5vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding-top: 140px;
-    padding-bottom: 80px;
-  }
 
-  .quadrant {
-    position: relative;
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-    bottom: auto !important;
-    transform: none !important;
-    text-align: left !important;
-    margin-bottom: 20px;
-  }
-
-  .quadrant.bottom-right {
-    margin-bottom: 30px;
-  }
-
-  .quadrant.center-right {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) !important;
-    margin-bottom: 0;
-    z-index: 10;
-  }
-
-  .display-title {
-    font-size: clamp(2.5rem, 9vw, 4.5rem);
-  }
-
-  .context-subtitle {
-    font-size: 0.8rem;
-    letter-spacing: 0.15em;
-  }
-
-  .cta-circle {
-    width: 100px;
-    height: 100px;
-  }
-
-  .cta-text {
-    font-size: 0.45rem;
-    max-width: 60px;
-  }
 }
 
 @media (max-width: 480px) {
@@ -1591,3 +1789,1494 @@ body {
 
 
 
+
+/* =============================================================
+   EDITORIAL MAGAZINE STYLES & SUB-PAGE SYSTEM (AWARDS-LEVEL UI)
+   ============================================================= */
+
+body.editorial-body {
+  background-color: #FFFFFF;
+  color: #1e293b;
+}
+
+/* Nav Active Link indicator */
+.nav-item.active {
+  color: var(--antique-gold) !important;
+  font-weight: 700;
+}
+
+.nav-item.active::after {
+  width: 100% !important;
+}
+
+/* Editorial Hero Section */
+.editorial-hero {
+  background-color: #FFFFFF;
+  padding: 140px 0 60px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  position: relative;
+}
+
+.editorial-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+.editorial-badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #475569;
+  margin-bottom: 24px;
+}
+
+.editorial-badge-tag i {
+  color: var(--antique-gold);
+}
+
+.editorial-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 5.5vw, 5.4rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #0f172a;
+  margin-bottom: 24px;
+}
+
+.gold-italic {
+  font-style: italic;
+  font-weight: 400;
+  color: #b45309;
+}
+
+.editorial-lead {
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  line-height: 1.7;
+  color: #475569;
+  max-width: 820px;
+  margin-bottom: 36px;
+}
+
+.editorial-meta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #94a3b8;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.meta-val {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.meta-separator {
+  width: 1px;
+  height: 32px;
+  background-color: #e2e8f0;
+}
+
+/* -------------------------------------------------------------
+   Leadership Editorial Spread (About Page)
+   ------------------------------------------------------------- */
+.leadership-spread {
+  padding: 80px 0;
+  background-color: #fbfbfb;
+}
+
+.spread-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: center;
+}
+
+.spread-image-wrapper {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+}
+
+.spread-img {
+  width: 100%;
+  height: clamp(440px, 55vh, 600px);
+  object-fit: cover;
+  display: block;
+}
+
+.spread-caption-card {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(12px);
+  padding: 20px 24px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.caption-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--antique-gold);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.spread-caption-card h4 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.spread-caption-card p {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  opacity: 0.85;
+  margin: 0;
+}
+
+.spread-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.mag-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  color: var(--antique-gold);
+  margin-bottom: 12px;
+}
+
+.mag-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #0f172a;
+  margin-bottom: 24px;
+}
+
+.mag-quote {
+  position: relative;
+  padding: 20px 24px 20px 40px;
+  background-color: #ffffff;
+  border-left: 4px solid var(--antique-gold);
+  border-radius: 0 16px 16px 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  margin-bottom: 24px;
+}
+
+.mag-quote i {
+  position: absolute;
+  top: 14px;
+  left: 12px;
+  font-size: 1.4rem;
+  color: var(--antique-gold);
+  opacity: 0.6;
+}
+
+.mag-quote blockquote {
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: #334155;
+}
+
+.mag-body {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #475569;
+  margin-bottom: 16px;
+}
+
+/* -------------------------------------------------------------
+   History Timeline (About Page)
+   ------------------------------------------------------------- */
+.history-section {
+  padding: 100px 0;
+  background-color: #FFFFFF;
+}
+
+.history-header {
+  max-width: 1240px;
+  margin: 0 auto 50px auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+  text-align: center;
+}
+
+.history-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: #64748b;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.history-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 12px;
+}
+
+.history-sub {
+  font-size: 1.05rem;
+  color: #64748b;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.timeline-grid {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+.timeline-card {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 22px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.timeline-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+}
+
+.timeline-card.gold-border {
+  border: 2px solid var(--antique-gold);
+  background: linear-gradient(180deg, #fffcf5 0%, #ffffff 100%);
+}
+
+.timeline-year {
+  font-size: 2.2rem;
+  font-weight: 900;
+  font-family: var(--font-serif);
+  color: #0f172a;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.timeline-year.gold {
+  color: #b45309;
+}
+
+.timeline-status-badge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background-color: #e2e8f0;
+  color: #334155;
+  margin-bottom: 18px;
+}
+
+.timeline-status-badge.gold {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.timeline-headline {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.timeline-narrative {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: #475569;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.timeline-highlight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #2563eb;
+  padding-top: 14px;
+  border-top: 1px dashed #cbd5e1;
+}
+
+.timeline-highlight.gold {
+  color: #b45309;
+}
+
+/* -------------------------------------------------------------
+   Pillars & Stats Strip
+   ------------------------------------------------------------- */
+.pillars-section {
+  padding: 60px 0;
+  background-color: #0f172a;
+  color: #ffffff;
+}
+
+.pillars-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 36px;
+}
+
+.pillar-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.pillar-num {
+  font-family: var(--font-serif);
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: var(--antique-gold);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.pillar-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #f8fafc;
+}
+
+.pillar-desc {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #94a3b8;
+}
+
+/* -------------------------------------------------------------
+   Sermon Expression 1: Divine Service (Regal & Cinematic)
+   ------------------------------------------------------------- */
+.sermon-filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.sermon-tab {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: #334155;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sermon-tab:hover {
+  background: #e2e8f0;
+}
+
+.sermon-tab.active {
+  background: #0f172a;
+  border-color: #0f172a;
+  color: #ffffff;
+}
+
+.sermon-style-showcase {
+  padding: 80px 0;
+}
+
+.sermon-style-showcase.divine-theme {
+  background: #0a0a0c;
+  color: #ffffff;
+}
+
+.sermon-style-intro {
+  max-width: 1240px;
+  margin: 0 auto 40px auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+.style-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.style-badge.gold {
+  background: rgba(251, 169, 44, 0.15);
+  border: 1px solid var(--antique-gold);
+  color: var(--antique-gold);
+}
+
+.style-badge.navy {
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+}
+
+.style-headline {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.style-desc {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 760px;
+  opacity: 0.8;
+}
+
+/* Featured Divine Sermon */
+.divine-featured-card {
+  max-width: 1240px;
+  margin: 0 auto 50px auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(30px, 4vw, 60px);
+  align-items: center;
+}
+
+.divine-video-wrapper {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.divine-cover-img {
+  width: 100%;
+  height: clamp(320px, 40vh, 440px);
+  object-fit: cover;
+  display: block;
+}
+
+.video-play-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sermon-play-btn {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: var(--antique-gold);
+  border: none;
+  color: #000000;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.25s ease, background 0.25s ease;
+  box-shadow: 0 10px 25px rgba(251, 169, 44, 0.4);
+}
+
+.sermon-play-btn:hover {
+  transform: scale(1.1);
+  background: #ffa115;
+}
+
+.duration-pill {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.divine-featured-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.divine-tags-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.sermon-category-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.sermon-category-tag.gold {
+  color: var(--antique-gold);
+}
+
+.sermon-date {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.divine-sermon-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.divine-sermon-summary {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: #cbd5e1;
+  margin-bottom: 24px;
+}
+
+.sermon-speaker-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.speaker-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--antique-gold);
+}
+
+.speaker-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.speaker-name {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.speaker-role {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.divine-action-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.audio-listen-btn, .notes-download-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  padding: 10px 18px;
+  border-radius: 9999px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.audio-listen-btn:hover, .notes-download-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.divine-cards-grid {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+}
+
+.divine-card {
+  background: #141419;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.divine-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--antique-gold);
+}
+
+.card-thumb {
+  position: relative;
+  height: 180px;
+}
+
+.card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tag-floating {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  color: var(--antique-gold);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+.card-content {
+  padding: 22px;
+}
+
+.card-date {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.card-content h4 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.card-content p {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: #94a3b8;
+  margin-bottom: 16px;
+}
+
+.divine-card-link {
+  color: var(--antique-gold);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap 0.2s ease;
+}
+
+.divine-card-link:hover {
+  gap: 10px;
+}
+
+/* -------------------------------------------------------------
+   Sermon Expression 2: Sabbath School (Expository & Parchment)
+   ------------------------------------------------------------- */
+.sermon-style-showcase.sabbath-theme {
+  background: #faf8f5; /* Warm ivory parchment background */
+  color: #1e293b;
+  border-top: 1px solid #e7e5e4;
+}
+
+.sabbath-font {
+  color: #1e293b;
+}
+
+.sabbath-featured-spread {
+  max-width: 1240px;
+  margin: 0 auto 50px auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(30px, 5vw, 70px);
+  align-items: center;
+}
+
+.sabbath-module-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: #0369a1;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.sabbath-module-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 2.6vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.25;
+  color: #0f172a;
+  margin-bottom: 18px;
+}
+
+.sabbath-module-desc {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #475569;
+  margin-bottom: 22px;
+}
+
+.scripture-callout-box {
+  background: #ffffff;
+  border-left: 4px solid #0369a1;
+  padding: 16px 20px;
+  border-radius: 0 14px 14px 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  margin-bottom: 24px;
+}
+
+.callout-ref {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #0369a1;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.callout-verse {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #334155;
+  margin: 0;
+}
+
+.sabbath-meta-stats {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.stat-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.cell-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #94a3b8;
+  margin-bottom: 2px;
+}
+
+.cell-val {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.sabbath-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.sabbath-pill-btn {
+  background: #0369a1;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s ease;
+}
+
+.sabbath-pill-btn:hover {
+  background: #0284c7;
+}
+
+.sabbath-secondary-btn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s ease;
+}
+
+.sabbath-secondary-btn:hover {
+  background: #f1f5f9;
+}
+
+.sabbath-parchment-frame {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e7e5e4;
+}
+
+.parchment-img {
+  width: 100%;
+  height: clamp(340px, 44vh, 480px);
+  object-fit: cover;
+  display: block;
+}
+
+.parchment-floating-note {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  padding: 16px 20px;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.parchment-floating-note i {
+  font-size: 1.4rem;
+  color: #0369a1;
+  margin-top: 2px;
+}
+
+.parchment-floating-note strong {
+  font-size: 0.78rem;
+  color: #0f172a;
+  display: block;
+}
+
+.parchment-floating-note p {
+  font-size: 0.85rem;
+  font-family: var(--font-serif);
+  font-style: italic;
+  margin: 0;
+  color: #475569;
+}
+
+/* Sabbath Lessons Table */
+.sabbath-lessons-table {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 60px 1.8fr 1.4fr 160px;
+  padding: 16px 24px;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 60px 1.8fr 1.4fr 160px;
+  padding: 20px 24px;
+  border-bottom: 1px solid #f1f5f9;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.table-row:hover {
+  background: #f8fafc;
+}
+
+.col-num {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #94a3b8;
+}
+
+.col-title strong {
+  display: block;
+  font-size: 1rem;
+  color: #0f172a;
+  margin-bottom: 2px;
+}
+
+.row-sub {
+  font-size: 0.82rem;
+  color: #64748b;
+}
+
+.col-passage {
+  font-size: 0.9rem;
+  color: #0369a1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.col-materials {
+  display: flex;
+  gap: 8px;
+}
+
+.table-btn {
+  background: #f1f5f9;
+  color: #334155;
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+.table-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+/* -------------------------------------------------------------
+   Podcast Strip & General CTA Blocks
+   ------------------------------------------------------------- */
+.podcast-strip-section {
+  padding: 70px 0;
+  background: #ffffff;
+}
+
+.podcast-box {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 40px clamp(20px, 4vw, 50px);
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  border-radius: 28px;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 28px;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
+}
+
+.podcast-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: var(--antique-gold);
+  margin-bottom: 8px;
+}
+
+.podcast-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 2.4vw, 2.2rem);
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.podcast-desc {
+  font-size: 0.96rem;
+  color: #cbd5e1;
+  margin: 0;
+}
+
+.podcast-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.media-badge-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.media-badge-btn:hover {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+/* -------------------------------------------------------------
+   Ministries Catalog Grid
+   ------------------------------------------------------------- */
+.ministry-catalog-section {
+  padding: 80px 0;
+  background-color: #fbfbfb;
+}
+
+.ministry-catalog-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.ministry-card-feature {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(30px, 4vw, 60px);
+  align-items: center;
+  background: #ffffff;
+  border-radius: 26px;
+  padding: 32px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+}
+
+.ministry-card-feature.reverse {
+  grid-template-columns: 1.15fr 1fr;
+}
+
+.ministry-card-feature.reverse .ministry-img-box {
+  order: 2;
+}
+
+.ministry-card-feature.reverse .ministry-body {
+  order: 1;
+}
+
+.ministry-img-box {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  height: clamp(260px, 34vh, 360px);
+}
+
+.ministry-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ministry-cat-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(6px);
+  color: #ffffff;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ministry-cat-badge.gold {
+  color: var(--antique-gold);
+}
+
+.ministry-cat-badge.red {
+  color: #f87171;
+}
+
+.ministry-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.ministry-age {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.ministry-body h3 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 14px;
+}
+
+.ministry-body p {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: #475569;
+  margin-bottom: 20px;
+}
+
+.ministry-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ministry-highlights li {
+  font-size: 0.9rem;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ministry-highlights li i {
+  color: #16a34a;
+  font-weight: bold;
+}
+
+.ministry-join-btn {
+  align-self: flex-start;
+  color: #0f172a;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 2px solid var(--antique-gold);
+  padding-bottom: 4px;
+  transition: all 0.2s ease;
+}
+
+.ministry-join-btn:hover {
+  gap: 12px;
+  color: #b45309;
+}
+
+/* -------------------------------------------------------------
+   Events Schedule System
+   ------------------------------------------------------------- */
+.events-schedule-section {
+  padding: 80px 0;
+  background-color: #f8fafc;
+}
+
+.events-schedule-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.event-schedule-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 220px 1fr auto;
+  gap: 30px;
+  align-items: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.event-schedule-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.07);
+}
+
+.event-schedule-card.featured-event {
+  border-left: 6px solid var(--antique-gold);
+}
+
+.event-schedule-card.solemnity-card {
+  border-left: 6px solid #ef4444;
+}
+
+.event-date-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.event-day {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.event-time {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin: 4px 0 10px 0;
+}
+
+.event-pill-badge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: #f1f5f9;
+  color: #475569;
+  text-transform: uppercase;
+}
+
+.event-pill-badge.gold {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.event-pill-badge.red {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.event-detail-col h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.event-desc {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #475569;
+  margin-bottom: 12px;
+}
+
+.event-location-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 0.82rem;
+  color: #64748b;
+}
+
+.event-location-row span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.outline-pill-btn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #0f172a;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.outline-pill-btn:hover {
+  background: #f1f5f9;
+}
+
+/* -------------------------------------------------------------
+   Editorial Footer
+   ------------------------------------------------------------- */
+.editorial-footer {
+  background: #09090b;
+  color: #ffffff;
+  padding: 80px 0 40px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-wrap {
+  max-width: 1240px;
+  margin: 0 auto 50px auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footer-brand {
+  max-width: 520px;
+}
+
+.footer-brand .brand-title {
+  font-size: 1.3rem;
+  letter-spacing: 0.1em;
+  font-weight: 800;
+  display: block;
+  margin-bottom: 12px;
+  color: var(--antique-gold);
+}
+
+.footer-brand p {
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: #94a3b8;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-links a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--antique-gold);
+}
+
+.footer-bottom {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 24px clamp(20px, 4vw, 40px) 0 clamp(20px, 4vw, 40px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.8rem;
+  color: #64748b;
+  text-align: center;
+}
+
+/* -------------------------------------------------------------
+   Responsive Breakpoints for Sub-Pages
+   ------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .spread-container, .divine-featured-card, .sabbath-featured-spread, .ministry-card-feature, .ministry-card-feature.reverse {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .table-header {
+    display: none;
+  }
+  .table-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .event-schedule-card {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
