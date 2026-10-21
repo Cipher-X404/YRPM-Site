@@ -1,50 +1,3703 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  --gold: #FBA92C;
+/* ==========================================================================
+   ARCHITECTURAL LINEN & MIDNIGHT OBSIDIAN — SACRED SANCTUARY DESIGN SYSTEM
+   ========================================================================== */
+
+:root,
+html[data-theme="light"],
+body[data-theme="light"] {
+  --bg-primary: #F8F6F0;
+  --bg-surface: #EFECE3;
+  --bg-card: #FCFBF7;
+  --bg-elevated: #FFFFFF;
+  --text-primary: #1C1A18;
+  --text-secondary: #5A554C;
+  --accent-primary: #3B5848;
+  --accent-secondary: #C85A32;
+  --accent-secondary-deep: #B04A26;
+
+  --obsidian-bg: #121316;
+  --obsidian-surface: #1A1C23;
+  --obsidian-text: #ECEAE5;
+  --obsidian-muted: #9E9A90;
+  --obsidian-sage: #6C947A;
+  --obsidian-accent: #E07A5F;
+
+  --ink: var(--text-primary);
+  --ink-soft: #2A2723;
+  --ink-muted: var(--text-secondary);
+  --ivory: var(--bg-primary);
+  --cream: var(--bg-surface);
+  --sand: #E3DDD0;
+  --gold: var(--accent-secondary);
+  --gold-light: #E07A5F;
+  --gold-deep: var(--accent-secondary-deep);
+  --sage: var(--accent-primary);
+  --sage-soft: #6C947A;
+  --crimson: var(--accent-secondary-deep);
+
+  --line-dark: rgba(28, 26, 24, 0.1);
+  --line-strong: rgba(28, 26, 24, 0.18);
+  --line-light: rgba(236, 234, 229, 0.14);
+  --card-shadow: 0 20px 50px -18px rgba(28, 26, 24, 0.11);
+  --card-shadow-hover: 0 28px 64px -16px rgba(28, 26, 24, 0.18);
+  --nav-scrolled-bg: rgba(248, 246, 240, 0.94);
+  --nav-scrolled-border: rgba(28, 26, 24, 0.14);
+
+  --serif: var(--font-cormorant), Georgia, serif;
+  --sans: var(--font-jakarta), -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: var(--serif);
+  --font-sans: var(--sans);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Sermon detail page adaptive tokens */
+  --pure-white: #F8F6F0;
+  --bone-white: #EFECE3;
+  --antique-gold: #C85A32;
+  --deep-amber: #B04A26;
+  --midnight-slate: #1A1C23;
+  --rich-black: #1C1A18;
+  --muted-stone: #5A554C;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    --bg-primary: #121316;
+    --bg-surface: #1A1C23;
+    --bg-card: #1A1C23;
+    --bg-elevated: #22252E;
+    --text-primary: #ECEAE5;
+    --text-secondary: #9E9A90;
+    --accent-primary: #6C947A;
+    --accent-secondary: #E07A5F;
+    --accent-secondary-deep: #E07A5F;
+    --ink: #ECEAE5;
+    --ink-soft: #D8D4CA;
+    --ink-muted: #9E9A90;
+    --ivory: #121316;
+    --cream: #1A1C23;
+    --sand: #262932;
+    --gold: #E07A5F;
+    --gold-deep: #E07A5F;
+    --sage: #6C947A;
+    --line-dark: rgba(236, 234, 229, 0.11);
+    --line-strong: rgba(236, 234, 229, 0.22);
+    --card-shadow: 0 24px 54px -18px rgba(0, 0, 0, 0.58);
+    --card-shadow-hover: 0 30px 68px -16px rgba(0, 0, 0, 0.76);
+    --nav-scrolled-bg: rgba(22, 24, 30, 0.94);
+    --nav-scrolled-border: rgba(236, 234, 229, 0.18);
+    --pure-white: #121316;
+    --bone-white: #1A1C23;
+    --antique-gold: #E07A5F;
+    --deep-amber: #C85A32;
+    --midnight-slate: #1A1C23;
+    --rich-black: #ECEAE5;
+    --muted-stone: #9E9A90;
+    color-scheme: dark;
+  }
+}
+
+html[data-theme="dark"],
+body[data-theme="dark"] {
+  --bg-primary: #121316;
+  --bg-surface: #1A1C23;
+  --bg-card: #1A1C23;
+  --bg-elevated: #22252E;
+  --text-primary: #ECEAE5;
+  --text-secondary: #9E9A90;
+  --accent-primary: #6C947A;
+  --accent-secondary: #E07A5F;
+  --accent-secondary-deep: #E07A5F;
+  --ink: #ECEAE5;
+  --ink-soft: #D8D4CA;
+  --ink-muted: #9E9A90;
+  --ivory: #121316;
+  --cream: #1A1C23;
+  --sand: #262932;
+  --gold: #E07A5F;
+  --gold-deep: #E07A5F;
+  --sage: #6C947A;
+  --line-dark: rgba(236, 234, 229, 0.11);
+  --line-strong: rgba(236, 234, 229, 0.22);
+  --card-shadow: 0 24px 54px -18px rgba(0, 0, 0, 0.58);
+  --card-shadow-hover: 0 30px 68px -16px rgba(0, 0, 0, 0.76);
+  --nav-scrolled-bg: rgba(22, 24, 30, 0.94);
+  --nav-scrolled-border: rgba(236, 234, 229, 0.18);
+  --pure-white: #121316;
+  --bone-white: #1A1C23;
+  --antique-gold: #E07A5F;
+  --deep-amber: #C85A32;
+  --midnight-slate: #1A1C23;
+  --rich-black: #ECEAE5;
+  --muted-stone: #9E9A90;
+  color-scheme: dark;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg-primary);
 }
 
 body {
-  font-family: var(--font-sans);
-  background-color: #000000;
-  color: #1e293b;
+  font-family: var(--sans);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.68;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  transition:
+    background-color 0.35s var(--ease-out),
+    color 0.35s var(--ease-out);
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
+::selection {
+  background: var(--accent-secondary);
+  color: #F8F6F0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 999;
+  padding: 12px 18px;
+  background: var(--accent-secondary-deep);
+  color: #F8F6F0;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  border-radius: 999px;
+  transform: translateY(-160%);
+  transition: transform 0.2s var(--ease-out);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent-secondary);
+  outline-offset: 4px;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY & WARM SANCTUARY HEADER DIVIDERS
+   ========================================================================== */
+.display {
+  font-family: var(--serif);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+}
+.display em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-secondary);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(59, 88, 72, 0.1);
+  border: 1px solid rgba(59, 88, 72, 0.2);
+}
+html[data-theme="dark"] .eyebrow {
+  background: rgba(108, 148, 122, 0.14);
+  border-color: rgba(108, 148, 122, 0.28);
+}
+.eyebrow::before {
+  content: "✦";
+  font-size: 0.72rem;
+  color: var(--accent-secondary);
+  line-height: 1;
+}
+
+.container-wide {
+  width: min(1360px, 92vw);
+  margin-inline: auto;
+}
+
+.section-space {
+  padding-block: clamp(84px, 10vw, 144px);
+  position: relative;
+}
+
+.section-heading {
+  font-size: clamp(2.6rem, 5.4vw, 4.9rem);
+  max-width: 16ch;
+}
+
+.magazine-meta-rail {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.02rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--text-secondary);
+}
+.folio-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent-secondary);
+  white-space: nowrap;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: rgba(200, 90, 50, 0.08);
+  border: 1px solid rgba(200, 90, 50, 0.2);
+}
+.folio-tag::before {
+  content: "✢";
+  font-style: normal;
+  font-size: 0.78rem;
+  opacity: 0.85;
+}
+.folio-line,
+.arch-rule-draw {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--line-strong),
+    var(--line-dark) 65%,
+    transparent
+  );
+  transform-origin: left center;
+}
+.folio-count {
+  white-space: nowrap;
+  color: var(--text-secondary);
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 6px 15px;
+  border-radius: 999px;
+  background: var(--bg-surface);
+  border: 1px solid var(--line-strong);
+}
+
+/* Sacred Cathedral Arch Frame for Sanctuary Imagery */
+.sanctuary-arch-frame {
+  border-radius: 210px 210px 38px 38px !important;
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--line-strong);
+}
+@media (max-width: 760px) {
+  .sanctuary-arch-frame {
+    border-radius: 130px 130px 28px 28px !important;
+  }
+}
+
+.grain {
+  position: relative;
+}
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.032;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.7) 1px, transparent 0);
+  background-size: 3px 3px;
+  border-radius: inherit;
+}
+
+/* ==========================================================================
+   ARCHITECTURAL SANCTUARY NAVBAR & BESPOKE BRANDMARK LOGO
+   ========================================================================== */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 95;
+  padding: 18px 0;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 13, 16, 0.78) 0%,
+    rgba(12, 13, 16, 0.34) 68%,
+    rgba(12, 13, 16, 0) 100%
+  );
+  border-bottom: 1px solid rgba(236, 234, 229, 0.1);
+  pointer-events: auto;
+  transition:
+    background 0.35s var(--ease-out),
+    padding 0.35s var(--ease-out),
+    border-color 0.35s var(--ease-out),
+    box-shadow 0.35s var(--ease-out);
+}
+.nav.scrolled {
+  padding: 12px 0;
+  background: var(--nav-scrolled-bg);
+  border-bottom-color: var(--nav-scrolled-border);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  box-shadow: 0 16px 42px -20px rgba(28, 26, 24, 0.25);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 18px;
+}
+
+/* Bespoke Architectural Arch Crest & Editorial Church Name Brandmark */
+.brand,
+.brand-wordmark-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  color: #ECEAE5;
+  text-decoration: none;
+  position: relative;
+  flex-shrink: 0;
+  transition: color 0.35s var(--ease-out);
+}
+.nav.scrolled .brand-wordmark-logo {
+  color: var(--text-primary);
+}
+
+.brand-monogram-seal {
+  position: relative;
+  width: 42px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 22px 22px 10px 10px;
+  background: linear-gradient(
+    160deg,
+    rgba(224, 122, 95, 0.24) 0%,
+    rgba(59, 88, 72, 0.22) 100%
+  );
+  border: 1px solid rgba(224, 122, 95, 0.48);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 248, 240, 0.25),
+    0 8px 20px -8px rgba(0, 0, 0, 0.35);
+  transition:
+    background 0.35s var(--ease-out),
+    border-color 0.35s var(--ease-out),
+    transform 0.35s var(--ease-out);
+}
+.brand-wordmark-logo:hover .brand-monogram-seal {
+  transform: translateY(-1px);
+  border-color: var(--obsidian-accent);
+}
+.nav.scrolled .brand-monogram-seal {
+  background: var(--bg-surface);
+  border-color: rgba(200, 90, 50, 0.42);
+}
+
+.brand-seal-svg {
+  width: 32px;
+  height: 34px;
+  overflow: visible;
+}
+.brand-arch-frame {
+  stroke: currentColor;
+  opacity: 0.92;
+}
+.brand-inner-arch {
+  stroke: var(--obsidian-sage);
+  opacity: 0.8;
+}
+.nav.scrolled .brand-inner-arch {
+  stroke: var(--accent-primary);
+}
+.brand-cross-stem {
+  stroke: var(--obsidian-accent);
+}
+.nav.scrolled .brand-cross-stem {
+  stroke: var(--accent-secondary-deep);
+}
+.brand-crown-dot {
+  fill: var(--obsidian-accent);
+}
+.nav.scrolled .brand-crown-dot {
+  fill: var(--accent-secondary);
+}
+
+.brand-wordmark-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+}
+.brand-yashua-chars {
+  display: inline-flex;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.52rem;
+  letter-spacing: 0.1em;
+  line-height: 1;
+}
+.brand-char-initial {
+  color: var(--obsidian-accent);
+}
+.nav.scrolled .brand-char-initial {
+  color: var(--accent-secondary-deep);
+}
+.brand-char-mask {
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1.05;
+}
+.brand-char {
+  display: inline-block;
+  will-change: transform;
+}
+.brand-lockup-divider {
+  width: 1.5px;
+  height: 24px;
+  border-radius: 999px;
+  background: rgba(224, 122, 95, 0.55);
+}
+.nav.scrolled .brand-lockup-divider {
+  background: rgba(176, 74, 38, 0.42);
+}
+.brand-wordmark-right {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.1;
+}
+.brand-sub-primary {
+  font-family: var(--sans);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ECEAE5;
+  white-space: nowrap;
+}
+.nav.scrolled .brand-sub-primary {
+  color: var(--text-primary);
+}
+.brand-sub-secondary {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: var(--obsidian-accent);
+  white-space: nowrap;
+}
+.nav.scrolled .brand-sub-secondary {
+  color: var(--accent-primary);
+}
+
+/* Primary desktop links */
+.nav-links {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-shrink: 0;
+}
+.nav-arch-link,
+.nav-drop-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.87rem;
+  font-weight: 500;
+  letter-spacing: 0.015em;
+  color: rgba(236, 234, 229, 0.92);
+  position: relative;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  transition:
+    color 0.25s ease,
+    background 0.25s ease;
+}
+.nav.scrolled .nav-arch-link,
+.nav.scrolled .nav-drop-trigger {
+  color: var(--text-primary);
+}
+.nav-arch-link:hover,
+.nav-drop-trigger:hover {
+  background: rgba(236, 234, 229, 0.12);
+}
+.nav.scrolled .nav-arch-link:hover,
+.nav.scrolled .nav-drop-trigger:hover {
+  background: var(--bg-surface);
+}
+.nav-arch-link.active {
+  font-weight: 600;
+  color: #FFFFFF;
+  background: rgba(224, 122, 95, 0.26);
+}
+.nav.scrolled .nav-arch-link.active {
+  color: #F8F6F0;
+  background: var(--accent-primary);
+}
+
+.nav-drop {
+  position: relative;
+}
+.nav-drop-chevron {
+  transition: transform 0.28s var(--ease-out);
+}
+.nav-drop-chevron.rotate {
+  transform: rotate(180deg);
+}
+
+/* Hover-bridge wrapper eliminates the dead gap between trigger and dropdown */
+.nav-drop-bridge {
+  position: absolute;
+  top: 100%;
+  left: -14px;
+  padding-top: 12px;
+  z-index: 110;
+}
+.nav-drop-panel {
+  min-width: 280px;
+  padding: 14px;
+  border-radius: 28px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--card-shadow-hover);
+}
+.nav-drop-header {
+  padding: 6px 14px 10px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.94rem;
+  color: var(--accent-primary);
+  border-bottom: 1px solid var(--line-dark);
+  margin-bottom: 6px;
+}
+.nav-drop-panel a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    padding-left 0.2s ease;
+}
+.nav-drop-panel a:hover {
+  background: var(--bg-surface);
+  color: var(--accent-secondary-deep);
+  padding-left: 18px;
+}
+.nav-drop-all {
+  margin-top: 6px;
+  border-top: 1px solid var(--line-dark);
+  border-radius: 0 0 18px 18px !important;
+  padding-top: 11px !important;
+  font-weight: 600 !important;
+  color: var(--accent-primary) !important;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   TACTILE SLIDING THEME SWITCH TOGGLE (Navbar & Drawer)
+   ========================================================================== */
+.theme-switch-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 11px 5px 6px;
+  border-radius: 999px;
+  border: 1px solid rgba(236, 234, 229, 0.28);
+  background: rgba(18, 19, 22, 0.42);
+  color: #ECEAE5;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+  transition:
+    background 0.28s var(--ease-out),
+    border-color 0.28s var(--ease-out),
+    color 0.28s var(--ease-out),
+    transform 0.2s ease;
+}
+.theme-switch-btn:hover {
+  border-color: var(--obsidian-accent);
+  transform: translateY(-1px);
+}
+.nav.scrolled .theme-switch-btn {
+  border-color: var(--line-strong);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+.switch-track {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  border-radius: 999px;
+  background: rgba(28, 26, 24, 0.35);
+  border: 1px solid rgba(236, 234, 229, 0.22);
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5px;
+  transition: background 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+}
+.nav.scrolled .switch-track {
+  background: rgba(59, 88, 72, 0.16);
+  border-color: rgba(59, 88, 72, 0.3);
+}
+.theme-switch-btn.is-dark .switch-track {
+  background: rgba(224, 122, 95, 0.24);
+  border-color: rgba(224, 122, 95, 0.5);
+}
+
+.switch-track-icon {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  opacity: 0.65;
+}
+.switch-icon-sun {
+  color: #F4B860;
+}
+.switch-icon-moon {
+  color: #D9E2EC;
+}
+.nav.scrolled .switch-icon-sun {
+  color: var(--accent-secondary-deep);
+}
+
+.switch-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #F8F6F0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.32);
+  transition:
+    transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.32s ease;
+}
+.nav.scrolled .switch-thumb {
+  background: var(--accent-primary);
+}
+.theme-switch-btn.is-dark .switch-thumb {
+  transform: translateX(20px);
+  background: var(--obsidian-accent);
+}
+.theme-switch-label {
+  white-space: nowrap;
+}
+
+.nav-cta {
+  padding: 8px 10px 8px 16px !important;
+  font-size: 0.81rem !important;
+  white-space: nowrap;
+}
+
+/* Menu Bar Trigger Button */
+.nav-menu-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(236, 234, 229, 0.28);
+  background: rgba(18, 19, 22, 0.36);
+  color: #ECEAE5;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+.nav.scrolled .nav-menu-trigger {
+  border-color: var(--line-strong);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
+.nav-menu-trigger:hover {
+  border-color: var(--obsidian-accent);
+}
+.menu-bars-icon {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 16px;
+}
+.menu-bars-icon span {
+  display: block;
+  height: 1.8px;
+  width: 100%;
+  border-radius: 999px;
+  background: currentColor;
+  transition: transform 0.28s var(--ease-out);
+}
+.nav-menu-trigger.is-open .menu-bars-icon span:first-child {
+  transform: translateY(3.4px) rotate(45deg);
+}
+.nav-menu-trigger.is-open .menu-bars-icon span:last-child {
+  transform: translateY(-3.4px) rotate(-45deg);
+}
+
+/* Floating Curved Sanctuary Navigation Drawer */
+.nav-drawer-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 98;
+  background: rgba(18, 19, 22, 0.66);
+  backdrop-filter: blur(6px);
+}
+
+.mobile-drawer {
+  position: fixed;
+  top: 14px;
+  right: 14px;
+  bottom: 14px;
+  width: min(500px, calc(100vw - 28px));
+  z-index: 100;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--line-strong);
+  border-radius: 36px;
+  padding: 26px clamp(22px, 4vw, 38px) 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 22px;
+  overflow-y: auto;
+  box-shadow: -24px 20px 64px rgba(0, 0, 0, 0.42);
+}
+
+.drawer-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line-dark);
+}
+.drawer-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.02rem;
+  font-weight: 500;
+  color: var(--accent-secondary);
+}
+.drawer-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.drawer-theme-btn {
+  padding: 5px 12px 5px 6px;
+  border-radius: 999px;
+  border-color: var(--line-strong);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
+.mobile-close {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.mobile-close:hover {
+  border-color: var(--accent-secondary);
+  color: var(--accent-secondary);
+}
+
+.drawer-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.drawer-primary-links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.drawer-link-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 13px 16px;
+  border-radius: 20px;
+  background: var(--bg-surface);
+  border: 1px solid transparent;
+  transition:
+    padding-left 0.25s var(--ease-out),
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+.drawer-link-row:hover,
+.drawer-link-row.active {
+  padding-left: 22px;
+  border-color: var(--accent-secondary);
+  color: var(--accent-secondary);
+}
+.drawer-link-title {
+  font-family: var(--serif);
+  font-size: clamp(1.45rem, 3vw, 1.85rem);
+  font-weight: 500;
+  line-height: 1.1;
+}
+.drawer-link-sub {
+  margin-left: auto;
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+}
+
+.drawer-fellowships-box {
+  padding: 18px;
+  border-radius: 26px;
+  background: var(--bg-surface);
+  border: 1px solid var(--line-strong);
+}
+.drawer-box-label {
+  display: block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.96rem;
+  font-weight: 500;
+  color: var(--accent-primary);
+  margin-bottom: 10px;
+}
+.drawer-fellowship-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.drawer-fellowship-pills a {
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--bg-card);
+  border: 1px solid var(--line-dark);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+.drawer-fellowship-pills a:hover {
+  border-color: var(--accent-secondary);
+  color: var(--accent-secondary);
+}
+
+.drawer-footer-bar {
+  padding-top: 16px;
+  border-top: 1px solid var(--line-dark);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.drawer-sabbath-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+.drawer-sabbath-meta strong {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   WARM SANCTUARY BUTTON SYSTEM
+   ========================================================================== */
+.round-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px 12px 24px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, #2D4638 100%);
+  color: #F8F6F0;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.015em;
+  text-transform: none;
+  border: 1px solid rgba(255, 250, 240, 0.22);
+  overflow: hidden;
+  isolation: isolate;
+  cursor: pointer;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 250, 240, 0.24),
+    0 12px 28px -10px rgba(45, 70, 56, 0.42);
+  transition:
+    transform 0.35s var(--ease-out),
+    box-shadow 0.35s var(--ease-out),
+    border-color 0.35s var(--ease-out),
+    background 0.35s var(--ease-out),
+    color 0.35s var(--ease-out);
+}
+.round-link .btn-curtain {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--accent-secondary-deep) 0%, #963B1B 100%);
+  transform: translateY(102%);
+  border-radius: inherit;
+  transition: transform 0.42s var(--ease-out);
+  z-index: -1;
+}
+.round-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 250, 240, 0.38);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 250, 240, 0.32),
+    0 16px 34px -10px rgba(176, 74, 38, 0.45);
+}
+.round-link:hover .btn-curtain {
+  transform: translateY(0);
+}
+
+.round-link.light {
+  background: linear-gradient(135deg, var(--accent-secondary-deep) 0%, #923819 100%);
+  color: #F8F6F0;
+  border-color: rgba(255, 244, 232, 0.28);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 248, 240, 0.28),
+    0 12px 30px -10px rgba(176, 74, 38, 0.48);
+}
+html[data-theme="dark"] .round-link.light {
+  background: linear-gradient(135deg, #D96B4E 0%, #B04A26 100%);
+  color: #FCFBF7;
+}
+.round-link.light .btn-curtain {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, #294033 100%);
+}
+.round-link.light:hover {
+  color: #FFFFFF;
+  border-color: rgba(255, 250, 240, 0.45);
+}
+
+.round-link.outline {
+  background: rgba(248, 246, 240, 0.12);
+  color: #ECEAE5;
+  border: 1px solid rgba(236, 234, 229, 0.38);
+  padding: 13px 22px;
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+.round-link.outline:hover {
+  background: rgba(236, 234, 229, 0.2);
+  border-color: var(--obsidian-accent);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.btn-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-arrow-box {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(255, 250, 240, 0.16);
+  border: 1px solid rgba(255, 250, 240, 0.24);
+  display: inline-grid;
+  place-items: center;
+  overflow: hidden;
+  transition:
+    background 0.32s var(--ease-out),
+    transform 0.32s var(--ease-out);
+}
+.round-link:hover .btn-arrow-box {
+  background: rgba(255, 250, 240, 0.25);
+  transform: scale(1.05);
+}
+.btn-arrow-primary,
+.btn-arrow-secondary {
+  grid-area: 1 / 1;
+  transition: transform 0.38s var(--ease-out);
+}
+.btn-arrow-secondary {
+  transform: translate(-130%, 130%);
+}
+.round-link:hover .btn-arrow-primary {
+  transform: translate(130%, -130%);
+}
+.round-link:hover .btn-arrow-secondary {
+  transform: translate(0, 0);
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: var(--accent-secondary-deep);
+  padding: 9px 18px;
+  border-radius: 999px;
+  background: rgba(200, 90, 50, 0.09);
+  border: 1px solid rgba(176, 74, 38, 0.24);
+  transition:
+    gap 0.25s var(--ease-out),
+    background 0.25s var(--ease-out),
+    border-color 0.25s var(--ease-out),
+    color 0.25s var(--ease-out),
+    transform 0.25s var(--ease-out);
+}
+html[data-theme="dark"] .text-link {
+  background: rgba(224, 122, 95, 0.13);
+  border-color: rgba(224, 122, 95, 0.32);
+  color: var(--obsidian-accent);
+}
+.text-link:hover {
+  gap: 13px;
+  background: var(--accent-secondary-deep);
+  border-color: var(--accent-secondary-deep);
+  color: #F8F6F0;
+  transform: translateY(-1px);
+}
+html[data-theme="dark"] .text-link:hover {
+  background: var(--obsidian-accent);
+  border-color: var(--obsidian-accent);
+  color: #121316;
+}
+.text-link svg {
+  width: 16px;
+  height: 16px;
+}
+.light-link {
+  color: var(--obsidian-accent);
+  background: rgba(224, 122, 95, 0.14);
+  border-color: rgba(224, 122, 95, 0.35);
+}
+
+/* ==========================================================================
+   VIDEO BACKGROUND & LIVING MOTION CONTROLS
+   ========================================================================== */
+.video-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  border-radius: inherit;
+}
+.video-bg-canvas,
+.video-bg-media,
+.video-bg-fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+.video-bg-canvas {
+  z-index: 1;
+}
+.video-bg-media {
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+.video-bg-media.is-ready {
+  opacity: 1;
+}
+.video-bg-fallback {
+  z-index: 0;
+}
+.video-bg.is-static .video-bg-media {
+  opacity: 0;
+}
+.video-bg.is-static .video-bg-fallback {
+  z-index: 3;
+}
+.video-bg-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(200, 90, 50, 0.22), transparent 58%),
+    linear-gradient(
+      180deg,
+      rgba(12, 13, 16, 0.68) 0%,
+      rgba(12, 13, 16, 0.48) 45%,
+      rgba(12, 13, 16, 0.9) 100%
+    );
+  pointer-events: none;
+}
+
+.video-bg-controls {
+  position: absolute;
+  right: clamp(18px, 4vw, 48px);
+  bottom: 24px;
+  z-index: 6;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px 6px 14px;
+  border-radius: 999px;
+  background: rgba(18, 19, 22, 0.66);
+  border: 1px solid rgba(236, 234, 229, 0.24);
+  backdrop-filter: blur(12px);
+  color: #ECEAE5;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.video-bg-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: rgba(236, 234, 229, 0.86);
+}
+.video-bg-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(236, 234, 229, 0.4);
+}
+.video-bg-dot.live {
+  background: var(--obsidian-accent);
+  box-shadow: 0 0 10px var(--obsidian-accent);
+}
+.video-bg-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 13px;
+  border-radius: 999px;
+  background: rgba(236, 234, 229, 0.14);
+  border: 1px solid rgba(236, 234, 229, 0.24);
+  color: #ECEAE5;
+  cursor: pointer;
+  font-size: 0.74rem;
+  font-weight: 600;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.video-bg-toggle:hover {
+  background: rgba(224, 122, 95, 0.28);
+  border-color: var(--obsidian-accent);
+}
+
+/* ==========================================================================
+   100x CINEMATIC BACKGROUND VIDEO HERO STAGE
+   ========================================================================== */
+.hero {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 120px 0 32px;
+  color: #ECEAE5;
+  background: var(--obsidian-bg);
+  border-radius: 0 0 56px 56px;
+  border-bottom: 1px solid rgba(236, 234, 229, 0.16);
+  box-shadow: 0 28px 70px -24px rgba(18, 19, 22, 0.52);
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+}
+.hero-ambient-orb {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(640px, 70vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(224, 122, 95, 0.22) 0%,
+    rgba(108, 148, 122, 0.12) 48%,
+    transparent 72%
+  );
+  filter: blur(48px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-stage-center {
+  position: relative;
+  z-index: 5;
+  margin-block: auto;
+  padding-block: 36px 28px;
+  max-width: 960px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-covenant-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px;
+  border-radius: 999px;
+  background: rgba(18, 19, 22, 0.58);
+  border: 1px solid rgba(224, 122, 95, 0.42);
+  backdrop-filter: blur(12px);
+  color: #FCE8E1;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.hero-live-dot {
   width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #0f172a;
-}
-::-webkit-scrollbar-thumb {
-  background: #334155;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #FBA92C;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--obsidian-accent);
+  box-shadow: 0 0 12px var(--obsidian-accent);
 }
 
-@keyframes spinSlow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.hero-display-title {
+  font-size: clamp(3.1rem, 7vw, 6.3rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin-bottom: 22px;
+  color: #ECEAE5;
+}
+.hero-title-line {
+  display: block;
+}
+.hero-display-title em {
+  color: var(--obsidian-accent);
+  font-style: italic;
+  font-weight: 400;
 }
 
-.animate-spin-slow {
-  animation: spinSlow 16s linear infinite;
+.hero-sub {
+  max-width: 60ch;
+  font-size: clamp(1.02rem, 1.3vw, 1.18rem);
+  color: rgba(236, 234, 229, 0.88);
+  margin-bottom: 32px;
 }
 
-.organic-hero-mask {
-  clip-path: url(#heroOrganicMask);
-  -webkit-clip-path: url(#heroOrganicMask);
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  align-items: center;
+  margin-bottom: 26px;
+}
+
+/* Inline Featured Sermon Ribbon on the Hero Stage */
+.hero-sermon-ribbon {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 8px 10px 8px 16px;
+  border-radius: 999px;
+  background: rgba(18, 19, 22, 0.62);
+  border: 1px solid rgba(236, 234, 229, 0.2);
+  backdrop-filter: blur(14px);
+  font-size: 0.82rem;
+}
+.hero-ribbon-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--obsidian-accent);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.94rem;
+}
+.hero-ribbon-title {
+  color: rgba(236, 234, 229, 0.9);
+  font-weight: 500;
+}
+.hero-ribbon-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 13px;
+  border-radius: 999px;
+  background: rgba(224, 122, 95, 0.22);
+  border: 1px solid rgba(224, 122, 95, 0.45);
+  color: #ECEAE5;
+  font-size: 0.76rem;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+.hero-ribbon-cta:hover {
+  background: var(--accent-secondary-deep);
+}
+
+/* Sliding Motion Switch (Hero & Weekly Rhythm) */
+.hero-mode-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 15px;
+  border-radius: 999px;
+  background: rgba(18, 19, 22, 0.68);
+  border: 1px solid rgba(236, 234, 229, 0.28);
+  color: #ECEAE5;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.2s ease;
+}
+.hero-mode-pill::after {
+  content: "";
+  width: 28px;
+  height: 16px;
+  border-radius: 999px;
+  background: rgba(236, 234, 229, 0.22);
+  border: 1px solid rgba(236, 234, 229, 0.35);
+  position: relative;
+  display: inline-block;
+  box-shadow: inset 12px 0 0 0 var(--obsidian-accent);
+  transition: box-shadow 0.28s var(--ease-out), background 0.28s ease;
+}
+.hero-mode-pill[aria-checked="false"]::after {
+  box-shadow: inset -12px 0 0 0 rgba(236, 234, 229, 0.55);
+}
+.hero-mode-pill:hover {
+  border-color: var(--obsidian-accent);
+  background: rgba(224, 122, 95, 0.22);
+  transform: translateY(-1px);
+}
+
+/* Interactive 4-Chapter Sanctuary Reel Dock at bottom of Hero */
+.hero-bar {
+  position: relative;
+  z-index: 5;
+  padding-top: 12px;
+}
+.hero-dock-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.hero-bar-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  padding: 12px;
+  border-radius: 32px;
+  background: rgba(18, 19, 22, 0.62);
+  border: 1px solid rgba(236, 234, 229, 0.18);
+  backdrop-filter: blur(18px);
+}
+.hero-meta-item {
+  text-align: left;
+  padding: 14px 18px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(236, 234, 229, 0.1);
+  color: #ECEAE5;
+  cursor: pointer;
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  transition:
+    transform 0.25s var(--ease-out),
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+.hero-meta-item:hover,
+.hero-meta-item.is-active {
+  transform: translateY(-2px);
+  background: rgba(224, 122, 95, 0.16);
+  border-color: rgba(224, 122, 95, 0.5);
+}
+.hero-meta-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-meta-no {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--obsidian-accent);
+}
+.hero-meta-item small {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.94rem;
+  color: var(--obsidian-accent);
+}
+.hero-meta-item strong {
+  font-family: var(--serif);
+  font-size: 1.16rem;
+  font-weight: 500;
+  color: #ECEAE5;
+}
+.hero-meta-sub {
+  font-size: 0.73rem;
+  color: rgba(236, 234, 229, 0.72);
+  line-height: 1.35;
+}
+.hero-meta-progress {
+  margin-top: 6px;
+  width: 100%;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(236, 234, 229, 0.15);
+  overflow: hidden;
+}
+.hero-meta-progress-fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  border-radius: inherit;
+  background: var(--obsidian-accent);
+}
+.hero-meta-progress-fill.is-running {
+  width: 100%;
+  transition: width 5.5s linear;
+}
+.hero-dock-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-inline: 8px;
+}
+.hero-dock-caption {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.94rem;
+  color: rgba(236, 234, 229, 0.82);
+}
+
+/* ==========================================================================
+   FLOATING CAPSULE MARQUEE RIBBON (.marquee, .marquee-strip, .service-strip)
+   ========================================================================== */
+.marquee,
+.marquee-strip,
+.service-strip {
+  position: relative;
+  z-index: 4;
+  width: min(1360px, 92vw);
+  margin: 0 auto 26px;
+  padding: 14px 28px;
+  border-radius: 999px;
+  background: rgba(18, 19, 22, 0.68);
+  border: 1px solid rgba(236, 234, 229, 0.2);
+  backdrop-filter: blur(12px);
+  color: #ECEAE5;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.18rem;
+}
+
+/* ==========================================================================
+   ABOUT PREVIEW — SCULPTED VIDEO PAVILION & GLASSMORPHIC HERITAGE STRIP
+   ========================================================================== */
+.about-preview {
+  position: relative;
+  width: min(1460px, calc(100vw - 24px));
+  margin: 24px auto;
+  padding-block: clamp(88px, 11vw, 148px);
+  border-radius: 56px;
+  background: var(--obsidian-bg);
+  color: #ECEAE5;
+  border: 1px solid rgba(236, 234, 229, 0.16);
+  box-shadow: 0 28px 70px -24px rgba(18, 19, 22, 0.48);
+  overflow: hidden;
+}
+.about-cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 8;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--accent-secondary-deep);
+  color: #F8F6F0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+}
+.about-content {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+.about-folio-rail {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: rgba(18, 19, 22, 0.56);
+  border: 1px solid rgba(236, 234, 229, 0.18);
+  backdrop-filter: blur(12px);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  color: rgba(236, 234, 229, 0.88);
+}
+.about-eyebrow {
+  color: var(--obsidian-accent);
+  background: rgba(224, 122, 95, 0.16);
+  border-color: rgba(224, 122, 95, 0.34);
+  margin-bottom: 16px;
+}
+.about-title {
+  font-size: clamp(2.8rem, 6.6vw, 5.6rem);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.24em;
+  line-height: 1.02;
+}
+.outline-text {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(236, 234, 229, 0.85);
+}
+.about-title-accent {
+  font-style: italic;
+  color: var(--obsidian-accent);
+}
+.about-aside {
+  max-width: 780px;
+  padding: 34px 38px;
+  border-radius: 40px;
+  background: rgba(18, 19, 22, 0.66);
+  border: 1px solid rgba(236, 234, 229, 0.2);
+  backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+}
+.about-aside .rule {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--obsidian-accent), rgba(236, 234, 229, 0.2), transparent);
+}
+.magazine-lead {
+  font-size: clamp(1.05rem, 1.35vw, 1.22rem);
+  color: rgba(236, 234, 229, 0.9);
+}
+.about-stat-strip {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.about-stat-strip > div {
+  padding: 16px 20px;
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(236, 234, 229, 0.14);
+}
+.about-stat-strip strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: 2rem;
+  line-height: 1.05;
+  color: var(--obsidian-accent);
+}
+.about-stat-strip span {
+  font-size: 0.8rem;
+  color: rgba(236, 234, 229, 0.8);
+}
+
+/* ==========================================================================
+   WEEKLY RHYTHM — CATHEDRAL ARCH VIDEO STAGE & SCULPTED ACCORDION LIST
+   ========================================================================== */
+.rhythm {
+  width: min(1460px, calc(100vw - 24px));
+  margin: 24px auto;
+  border-radius: 56px;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--card-shadow);
+  transition: background-color 0.35s var(--ease-out), color 0.35s var(--ease-out);
+}
+html[data-theme="dark"] .rhythm {
+  background: var(--obsidian-surface);
+  color: var(--obsidian-text);
+}
+.rhythm-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 42px;
+}
+.rhythm-head h2 {
+  font-size: clamp(2.5rem, 5vw, 4.4rem);
+  margin-top: 12px;
+}
+.magazine-lead-sm {
+  max-width: 42ch;
+  color: var(--text-secondary);
+}
+
+.rhythm-layout {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: clamp(28px, 4vw, 52px);
+  align-items: start;
+}
+.rhythm-stage {
+  position: relative;
+  min-height: 540px;
+  border-radius: 220px 220px 42px 42px !important;
+  overflow: hidden;
+  background: #121316;
+  color: #ECEAE5;
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--card-shadow-hover);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+}
+.rhythm-stage-topbar {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 18px;
+}
+.rhythm-stage-tag {
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: rgba(18, 19, 22, 0.68);
+  border: 1px solid rgba(236, 234, 229, 0.24);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.94rem;
+  color: var(--obsidian-accent);
+  backdrop-filter: blur(10px);
+}
+.rhythm-stage-photo {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  overflow: hidden;
+}
+.rhythm-stage-caption {
+  position: relative;
+  z-index: 5;
+  padding: 22px 26px;
+  border-radius: 28px;
+  background: rgba(18, 19, 22, 0.78);
+  border: 1px solid rgba(236, 234, 229, 0.2);
+  backdrop-filter: blur(14px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+.rhythm-stage-caption span {
+  display: block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--obsidian-accent);
+}
+.rhythm-stage-sub {
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  font-weight: 500;
+  color: #ECEAE5;
+}
+.rhythm-stage-caption strong {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  color: var(--obsidian-accent);
+}
+
+.rhythm-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.rhythm-entry {
+  border-radius: 30px;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  transition: border-color 0.3s ease, transform 0.25s ease;
+}
+.rhythm-entry.is-open {
+  border-color: var(--accent-secondary);
+}
+.rhythm-entry h3 button {
+  width: 100%;
+  padding: 20px 24px;
+  background: none;
+  border: 0;
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  font-family: inherit;
+}
+.rhythm-entry-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 1px solid var(--line-dark);
+  display: inline-grid;
+  place-items: center;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: var(--accent-secondary);
+}
+.rhythm-entry-name {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+.rhythm-entry-name small {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+.rhythm-entry-name small b {
+  color: var(--accent-secondary);
+}
+.rhythm-entry-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 1px solid var(--line-strong);
+  display: inline-grid;
+  place-items: center;
+  color: var(--text-primary);
+  transition: transform 0.32s var(--ease-out), background 0.3s ease, color 0.3s ease;
+}
+.rhythm-entry.is-open .rhythm-entry-icon {
+  transform: rotate(45deg);
+  background: var(--accent-secondary);
+  border-color: var(--accent-secondary);
+  color: #F8F6F0;
+}
+.rhythm-detail {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.36s var(--ease-out), opacity 0.3s ease;
+}
+.rhythm-entry.is-open .rhythm-detail {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.rhythm-detail-inner {
+  overflow: hidden;
+  padding: 0 24px 22px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+.rhythm-detail-inner p {
+  font-size: 0.93rem;
+  color: var(--text-secondary);
+}
+.rhythm-foot {
+  margin-top: 24px;
+  padding: 22px 26px;
+  border-radius: 30px;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* ==========================================================================
+   HOMEPAGE SERMON SHOWCASE & SCULPTED INSET SERMON CARDS
+   ========================================================================== */
+.sermons-showcase {
+  width: min(1460px, calc(100vw - 24px));
+  margin: 24px auto;
+  border-radius: 56px;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--card-shadow);
+  transition: background-color 0.35s var(--ease-out), color 0.35s var(--ease-out);
+}
+.section-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 38px;
+}
+.showcase-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+.showcase-filter-pills,
+.sermon-filter-pills,
+.filter-row {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 6px;
+  border-radius: 999px;
+  background: var(--bg-primary);
+  border: 1px solid var(--line-strong);
+}
+.filter-row {
+  margin-bottom: 34px;
+}
+.arch-filter-pill,
+.filter-row button {
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 0;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--sans);
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.015em;
+  cursor: pointer;
+  transition:
+    background 0.25s var(--ease-out),
+    color 0.25s var(--ease-out),
+    box-shadow 0.25s var(--ease-out);
+}
+.arch-filter-pill.active,
+.filter-row button.active {
+  background: var(--accent-primary);
+  color: #F8F6F0;
+  box-shadow: 0 6px 16px -6px rgba(59, 88, 72, 0.45);
+}
+
+/* Featured Sanctuary Sermon Spread (.feature-sermon) */
+.feature-sermon {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 16px;
+  padding: 14px;
+  border-radius: 44px;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--card-shadow);
+  margin-bottom: 36px;
+}
+.feature-sermon-visual {
+  position: relative;
+  min-height: 390px;
+  border-radius: 32px 150px 32px 32px;
+  overflow: hidden;
+  border: 1px solid var(--line-dark);
+}
+.feature-folio-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: rgba(18, 19, 22, 0.78);
+  border: 1px solid rgba(236, 234, 229, 0.24);
+  color: #ECEAE5;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.92rem;
+  backdrop-filter: blur(10px);
+}
+.feature-sermon-content {
+  padding: clamp(22px, 3.6vw, 42px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+.arch-card-topline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.arch-badge-type {
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: rgba(59, 88, 72, 0.14);
+  color: var(--accent-primary);
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+.arch-card-date {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.feature-sermon-content h3 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 3.2vw, 2.85rem);
+  font-weight: 500;
+  line-height: 1.08;
+  color: var(--text-primary);
+}
+.feature-sermon-sub {
+  color: var(--text-secondary);
+}
+.arch-passage-chips,
+.arch-card-scriptures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.arch-passage-chip,
+.arch-scripture-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: var(--bg-surface);
+  border: 1px solid var(--line-dark);
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.feature-sermon-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+/* Sculpted Inset Matted Cards (Sermons, Gatherings, Ministries) */
+.home-sermon-cards-grid,
+.listing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 28px;
+}
+
+.arch-sermon-card,
+.listing-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 12px;
+  border-radius: 36px;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  transition:
+    transform 0.35s var(--ease-out),
+    box-shadow 0.35s var(--ease-out),
+    border-color 0.35s var(--ease-out);
+}
+.arch-sermon-card:hover,
+.listing-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--accent-secondary);
+}
+
+.arch-sermon-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  margin-bottom: 10px;
+  border-radius: 999px;
+  background: var(--bg-surface);
+  border: 1px solid var(--line-dark);
+}
+.arch-catalog-no {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+.arch-type-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+.arch-type-pill.is-divine {
+  background: rgba(200, 90, 50, 0.13);
+  color: var(--accent-secondary-deep);
+}
+html[data-theme="dark"] .arch-type-pill.is-divine {
+  background: rgba(224, 122, 95, 0.18);
+  color: var(--obsidian-accent);
+}
+.arch-type-pill.is-sabbath {
+  background: rgba(59, 88, 72, 0.14);
+  color: var(--accent-primary);
+}
+
+/* Cathedral-Arch Topped Card Media */
+.arch-sermon-card-media {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  border-radius: 96px 96px 24px 24px;
+  background: var(--bg-surface);
+  border: 1px solid var(--line-dark);
+}
+.arch-sermon-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  transition: transform 0.6s var(--ease-out);
+}
+.listing-card > img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 96px 96px 24px 24px;
+  border: 1px solid var(--line-dark);
+}
+.arch-sermon-card:hover .arch-sermon-card-media img {
+  transform: scale(1.05);
+}
+.arch-media-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, transparent 35%, rgba(18, 19, 22, 0.76));
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 14px 18px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.arch-media-overlay span {
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(248, 246, 240, 0.94);
+  color: #1C1A18;
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+.arch-sermon-card:hover .arch-media-overlay {
+  opacity: 1;
+}
+
+.arch-sermon-card-body,
+.listing-card .body {
+  padding: 20px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+.arch-sermon-date,
+.listing-card .body small {
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--accent-primary);
+}
+.arch-sermon-card-body h3,
+.listing-card .body h3 {
+  font-family: var(--serif);
+  font-size: 1.58rem;
+  font-weight: 500;
+  line-height: 1.16;
+  color: var(--text-primary);
+}
+.arch-sermon-card-body h3 a:hover {
+  color: var(--accent-secondary-deep);
+}
+.arch-sermon-card-body p,
+.listing-card .body p {
+  font-size: 0.93rem;
+  color: var(--text-secondary);
+}
+
+.arch-sermon-card-foot {
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: var(--bg-surface);
+  border: 1px solid var(--line-dark);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.arch-foot-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+.arch-card-cta {
+  padding: 7px 14px !important;
+  font-size: 0.82rem !important;
+}
+
+/* ==========================================================================
+   LEADERSHIP SPREAD — CATHEDRAL ARCH PORTRAIT & ARCHED COVENANT FACTS
+   ========================================================================== */
+.leadership {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.35s var(--ease-out), color 0.35s var(--ease-out);
+}
+.lead-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(36px, 6vw, 84px);
+  align-items: center;
+}
+.lead-copy h2 {
+  font-size: clamp(2.4rem, 4.6vw, 4.1rem);
+  margin: 14px 0 20px;
+}
+.lead-copy p {
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+.magazine-dropcap::first-letter {
+  float: left;
+  font-family: var(--serif);
+  font-size: 3.5rem;
+  line-height: 0.84;
+  padding-right: 12px;
+  padding-top: 4px;
+  color: var(--accent-secondary);
+  font-weight: 600;
+}
+.lead-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 30px;
+}
+.arch-fact-card {
+  padding: 24px 22px;
+  border-radius: 36px 36px 24px 24px;
+  background: var(--bg-surface);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--card-shadow);
+}
+.arch-fact-tag {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: rgba(200, 90, 50, 0.1);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--accent-secondary);
+  margin-bottom: 8px;
+}
+.arch-fact-card b {
+  display: block;
+  font-family: var(--serif);
+  font-size: 2.4rem;
+  line-height: 1.05;
+  color: var(--text-primary);
+}
+.arch-fact-card span {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+}
+
+.lead-photo {
+  position: relative;
+  aspect-ratio: 4 / 4.8;
+  padding: 10px;
+  border-radius: 240px 240px 42px 42px !important;
+  overflow: hidden;
+  background: var(--bg-surface);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--card-shadow);
+}
+.lead-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+.lead-caption {
+  position: absolute;
+  inset: auto 22px 22px 22px;
+  z-index: 3;
+  padding: 22px 26px;
+  border-radius: 28px;
+  background: rgba(18, 19, 22, 0.82);
+  border: 1px solid rgba(236, 234, 229, 0.22);
+  color: #ECEAE5;
+  backdrop-filter: blur(14px);
+}
+.lead-caption small {
+  display: block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--obsidian-accent);
+  margin-bottom: 4px;
+}
+.lead-caption h3 {
+  font-family: var(--serif);
+  font-size: 1.55rem;
+  font-weight: 500;
+  line-height: 1.15;
+}
+.lead-caption-note {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.78rem;
+  color: rgba(236, 234, 229, 0.76);
+}
+
+/* ==========================================================================
+   SCULPTED LIVE BANNER PAVILION
+   ========================================================================== */
+.live-banner {
+  position: relative;
+  width: min(1460px, calc(100vw - 24px));
+  margin: 24px auto;
+  padding-top: clamp(88px, 11vw, 148px);
+  border-radius: 56px;
+  color: #ECEAE5;
+  background: var(--obsidian-bg);
+  border: 1px solid rgba(236, 234, 229, 0.16);
+  box-shadow: 0 28px 70px -24px rgba(18, 19, 22, 0.5);
+  overflow: hidden;
+}
+.live-banner .content {
+  position: relative;
+  z-index: 5;
+  width: min(920px, 92vw);
+  margin-inline: auto;
+  text-align: center;
+  padding-bottom: clamp(54px, 7vw, 88px);
+}
+.live-eyebrow {
+  color: var(--obsidian-accent);
+  background: rgba(224, 122, 95, 0.15);
+  border-color: rgba(224, 122, 95, 0.34);
+  justify-content: center;
+}
+.live-banner h2 {
+  font-size: clamp(2.6rem, 5.4vw, 4.7rem);
+  margin: 14px 0 18px;
+}
+.live-banner p {
+  max-width: 52ch;
+  margin: 0 auto 30px;
+  color: rgba(236, 234, 229, 0.84);
+}
+.live-banner .buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+/* ==========================================================================
+   PLAN YOUR VISIT — ARCHED TRIPTYCH STEPS & CURVED FAQ ACCORDION
+   ========================================================================== */
+.visit {
+  width: min(1460px, calc(100vw - 24px));
+  margin: 24px auto;
+  border-radius: 56px;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--card-shadow);
+  transition: background-color 0.35s var(--ease-out), color 0.35s var(--ease-out);
+}
+html[data-theme="dark"] .visit {
+  background: var(--obsidian-surface);
+  color: var(--obsidian-text);
+}
+
+.visit-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  margin: 40px 0 36px;
+}
+.arch-step-card {
+  position: relative;
+  padding: 36px 28px 30px;
+  border-radius: 120px 120px 34px 34px;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  transition:
+    transform 0.3s var(--ease-out),
+    border-color 0.3s var(--ease-out),
+    background-color 0.35s var(--ease-out);
+}
+.arch-step-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent-secondary);
+}
+.arch-step-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--bg-surface);
+  border: 1px solid var(--line-dark);
+}
+.arch-step-top .number {
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--accent-secondary);
+}
+.arch-step-code {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.94rem;
+  color: var(--accent-primary);
+}
+.arch-step-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(59, 88, 72, 0.12);
+  border: 1px solid rgba(59, 88, 72, 0.24);
+  color: var(--accent-primary);
+  display: inline-grid;
+  place-items: center;
+  margin-bottom: 12px;
+}
+.arch-step-body h3 {
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+.arch-step-body p {
+  font-size: 0.93rem;
+  color: var(--text-secondary);
+}
+
+.arch-location-banner {
+  padding: 32px 38px;
+  border-radius: 40px;
+  background: linear-gradient(
+    135deg,
+    rgba(59, 88, 72, 0.14),
+    rgba(200, 90, 50, 0.12)
+  );
+  border: 1px solid var(--line-strong);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 58px;
+}
+.visit-location-copy {
+  max-width: 64ch;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.visit-location-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.98rem;
+  color: var(--accent-secondary);
+}
+.visit-location-copy strong {
+  font-family: var(--serif);
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+.visit-location-copy span {
+  font-size: 0.93rem;
+  color: var(--text-secondary);
+}
+
+/* Interactive FAQ Accordion */
+.visit-faq {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(32px, 5vw, 68px);
+  align-items: start;
+  padding-top: 38px;
+  border-top: 1px solid var(--line-dark);
+}
+.visit-faq-intro h3 {
+  font-size: clamp(2.1rem, 3.8vw, 3.3rem);
+  margin: 8px 0 14px;
+  color: var(--text-primary);
+}
+.visit-faq-sub {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 22px;
+}
+.faq-expand-all-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  color: var(--text-primary);
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--card-shadow);
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.2s ease;
+}
+.faq-expand-all-btn:hover {
+  border-color: var(--accent-secondary);
+  color: var(--accent-secondary);
+  transform: translateY(-1px);
+}
+
+.visit-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.visit-faq-item {
+  border-radius: 30px;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  transition:
+    background 0.3s var(--ease-out),
+    border-color 0.3s var(--ease-out);
+}
+.visit-faq-item.is-open {
+  border-color: var(--accent-secondary);
+}
+.visit-faq-trigger {
+  width: 100%;
+  padding: 20px 26px;
+  background: none;
+  border: 0;
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 18px;
+  font-family: inherit;
+}
+.faq-q-index {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 1px solid var(--line-dark);
+  display: inline-grid;
+  place-items: center;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: var(--accent-secondary);
+}
+.faq-q-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.faq-q-tag {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.86rem;
+  color: var(--accent-primary);
+}
+.faq-q-copy strong {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+.faq-q-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  background: var(--bg-surface);
+  display: inline-grid;
+  place-items: center;
+  color: var(--text-primary);
+  transition:
+    transform 0.35s var(--ease-out),
+    background 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease;
+}
+.visit-faq-item.is-open .faq-q-icon {
+  transform: rotate(45deg);
+  background: var(--accent-secondary);
+  border-color: var(--accent-secondary);
+  color: #F8F6F0;
+}
+
+.visit-faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 0.38s var(--ease-out),
+    opacity 0.32s var(--ease-out);
+}
+.visit-faq-item.is-open .visit-faq-answer {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+.visit-faq-answer-inner {
+  overflow: hidden;
+}
+.visit-faq-answer-inner p {
+  padding: 0 26px 22px 82px;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   TESTIMONIAL / SCRIPTURE WITNESS WALL — SCULPTED LEAF SCROLL CARDS
+   ========================================================================== */
+.testimony {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.35s var(--ease-out), color 0.35s var(--ease-out);
+}
+.testimony-header-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: end;
+  margin-bottom: 42px;
+}
+.testimony-header-grid h2 {
+  font-size: clamp(2.5rem, 5vw, 4.4rem);
+  margin-top: 10px;
+}
+.testimony-intro {
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+}
+
+.testimony-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  margin-bottom: 34px;
+}
+.arch-scripture-card {
+  position: relative;
+  padding: 34px 30px;
+  border-radius: 48px 20px 48px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 22px;
+  transition: transform 0.3s var(--ease-out), box-shadow 0.3s var(--ease-out);
+}
+.arch-scripture-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--card-shadow-hover);
+}
+.arch-scripture-card.featured {
+  border-radius: 110px 110px 38px 38px;
+  background: linear-gradient(155deg, var(--accent-primary) 0%, #263B30 100%);
+  color: #F8F6F0;
+  border-color: var(--accent-primary);
+}
+.arch-scripture-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--bg-surface);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.arch-scripture-card.featured .arch-scripture-card-top {
+  background: rgba(248, 246, 240, 0.12);
+}
+.arch-witness-no {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.96rem;
+  color: var(--accent-secondary);
+}
+.arch-scripture-card.featured .arch-witness-no {
+  color: #F3B39B;
+}
+.arch-witness-theme {
+  color: var(--text-secondary);
+}
+.arch-scripture-card.featured .arch-witness-theme {
+  color: rgba(248, 246, 240, 0.82);
+}
+
+.arch-scripture-card-quote {
+  position: relative;
+}
+.quote-mark {
+  font-family: var(--serif);
+  font-size: 3.6rem;
+  line-height: 0.7;
+  color: var(--accent-secondary);
+  opacity: 0.45;
+  display: block;
+  margin-bottom: 8px;
+}
+.arch-scripture-card.featured .quote-mark {
+  color: #F3B39B;
+  opacity: 0.65;
+}
+.arch-scripture-card-quote p {
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  line-height: 1.32;
+}
+.arch-scripture-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px solid var(--line-dark);
+}
+.arch-scripture-card.featured .arch-scripture-card-foot {
+  border-top-color: rgba(248, 246, 240, 0.2);
+}
+.arch-scripture-card-foot small {
+  display: block;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+}
+.arch-witness-note {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+.arch-scripture-card.featured .arch-witness-note {
+  color: rgba(248, 246, 240, 0.78);
+}
+
+/* ==========================================================================
+   MINISTRIES PREVIEW GRID — ARCHED THUMBNAILS & SCULPTED FELLOWSHIP VESSELS
+   ========================================================================== */
+.ministries-preview {
+  width: min(1460px, calc(100vw - 24px));
+  margin: 24px auto;
+  border-radius: 56px;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--card-shadow);
+  transition: background-color 0.35s var(--ease-out), color 0.35s var(--ease-out);
+}
+.ministry-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+  margin-top: 40px;
+}
+.arch-movement-card,
+.ministry-card {
+  position: relative;
+  border-radius: 40px;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--card-shadow);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  transition:
+    transform 0.35s var(--ease-out),
+    box-shadow 0.35s var(--ease-out),
+    border-color 0.35s var(--ease-out);
+}
+.arch-movement-card:hover,
+.ministry-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--accent-secondary);
+}
+.arch-movement-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+}
+.arch-movement-no {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.04rem;
+  font-weight: 500;
+  color: var(--accent-secondary);
+}
+.ministry-card-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(59, 88, 72, 0.12);
+  border: 1px solid rgba(59, 88, 72, 0.24);
+  color: var(--accent-primary);
+  display: inline-grid;
+  place-items: center;
+}
+.arch-movement-Thumb {
+  border-radius: 90px 90px 24px 24px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line-dark);
+}
+.arch-movement-Thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  transition: transform 0.55s var(--ease-out);
+}
+.arch-movement-card:hover .arch-movement-Thumb img {
+  transform: scale(1.05);
+}
+.arch-movement-body {
+  padding-inline: 6px;
+}
+.arch-movement-body small {
+  display: block;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--accent-primary);
+  margin-bottom: 6px;
+}
+.arch-movement-body h3,
+.ministry-card h3 {
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.arch-movement-body p,
+.ministry-card p {
+  font-size: 0.93rem;
+  color: var(--text-secondary);
+}
+.arch-movement-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: var(--bg-surface);
+  border: 1px solid var(--line-dark);
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--accent-secondary-deep);
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+}
+html[data-theme="dark"] .arch-movement-link {
+  color: var(--obsidian-accent);
+}
+.arch-movement-link:hover {
+  background: var(--accent-secondary-deep);
+  border-color: var(--accent-secondary-deep);
+  color: #F8F6F0;
+}
+
+/* ==========================================================================
+   SCRIPTURE PILLARS — SACRED COVENANT TABLET ARCHES
+   ========================================================================== */
+.pillars {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.35s var(--ease-out), color 0.35s var(--ease-out);
+}
+.pillars-eyebrow {
+  color: var(--accent-primary);
+}
+.pillars h2 {
+  font-size: clamp(2.5rem, 5vw, 4.4rem);
+  margin: 10px 0 8px;
+}
+.pillars .hint {
+  color: var(--text-secondary);
+  margin-bottom: 38px;
+}
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+.pillar-card {
+  width: 100%;
+  min-height: 310px;
+  padding: 36px 26px 26px;
+  border-radius: 130px 130px 32px 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--card-shadow);
+  color: var(--text-primary);
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.35s ease;
+}
+.pillar-card:hover {
+  border-color: var(--accent-secondary);
+  box-shadow: var(--card-shadow-hover);
+}
+.pillar-card .ordinal {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 7px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: var(--bg-surface);
+  border: 1px solid var(--line-dark);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--accent-secondary);
+}
+.pillar-card-copy strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.58rem;
+  font-weight: 500;
+  line-height: 1.15;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+.pillar-card-copy span {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+.pillar-card-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: var(--bg-surface);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+}
+.pillar-card-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent-secondary-deep);
+}
+
+.pillar-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  background: rgba(18, 19, 22, 0.72);
+  backdrop-filter: blur(8px);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+.pillar-dialog {
+  position: relative;
+  width: min(600px, 94vw);
+  padding: 42px 38px;
+  border-radius: 44px;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: var(--card-shadow-hover);
+}
+.pillar-close {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+.pillar-dialog h3 {
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  font-weight: 500;
+}
+.pillar-dialog p {
+  color: var(--text-secondary);
+}
+.pillar-verse {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--accent-secondary);
+}
+
+/* ==========================================================================
+   FINAL CALL TO ACTION — SCULPTED SANCTUARY PAVILION
+   ========================================================================== */
+.final-cta {
+  position: relative;
+  width: min(1460px, calc(100vw - 24px));
+  margin: 24px auto 28px;
+  padding-block: clamp(92px, 11vw, 156px);
+  border-radius: 56px;
+  background: linear-gradient(135deg, #1E2822 0%, #15181C 55%, #231B18 100%);
+  background-size: 200% 200%;
+  color: #ECEAE5;
+  border: 1px solid rgba(236, 234, 229, 0.16);
+  box-shadow: 0 28px 70px -24px rgba(18, 19, 22, 0.5);
+  overflow: hidden;
+  text-align: center;
+}
+.cta-blob {
+  position: absolute;
+  left: -8%;
+  top: 10%;
+  width: min(440px, 46vw);
+  opacity: 0.14;
+  pointer-events: none;
+}
+.cta-interactive {
+  position: absolute;
+  right: 6%;
+  top: 16%;
+  width: 150px;
+  height: 150px;
+}
+.cta-orbit-art {
+  width: 100%;
+  height: 100%;
+}
+.cta-drag-light {
+  position: absolute;
+  inset: 42px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--obsidian-accent), transparent 72%);
+  cursor: grab;
+}
+.cta-eyebrow {
+  color: var(--obsidian-accent);
+  background: rgba(224, 122, 95, 0.16);
+  border-color: rgba(224, 122, 95, 0.34);
+  justify-content: center;
+}
+.final-cta h2 {
+  font-size: clamp(2.7rem, 5.8vw, 5.1rem);
+  max-width: 15ch;
+  margin: 14px auto 18px;
+}
+.final-cta p {
+  max-width: 54ch;
+  margin: 0 auto 32px;
+  color: rgba(236, 234, 229, 0.84);
+}
+.final-cta .buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+/* ==========================================================================
+   SUBPAGE HEROES, ARCHED TIMELINES, BELIEFS & GIVING NOTES
+   ========================================================================== */
+.page-hero {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: clamp(148px, 16vw, 206px) 0 clamp(76px, 9vw, 114px);
+  border-radius: 0 0 56px 56px;
+  background: var(--obsidian-bg);
+  color: #ECEAE5;
+  border-bottom: 1px solid rgba(236, 234, 229, 0.16);
+  box-shadow: 0 26px 64px -22px rgba(18, 19, 22, 0.48);
+  overflow: hidden;
+}
+.page-hero .container-wide {
+  position: relative;
+  z-index: 5;
+}
+.page-hero .eyebrow {
+  color: var(--obsidian-accent);
+  background: rgba(224, 122, 95, 0.16);
+  border-color: rgba(224, 122, 95, 0.34);
+}
+.page-hero h1 {
+  font-size: clamp(2.8rem, 6vw, 5.3rem);
+  max-width: 15ch;
+  margin: 12px 0 18px;
+}
+.page-hero p {
+  max-width: 58ch;
+  font-size: 1.08rem;
+  color: rgba(236, 234, 229, 0.84);
+}
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 38px;
+}
+.timeline-item {
+  padding: 34px 26px 28px;
+  border-radius: 110px 110px 32px 32px;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--card-shadow);
+}
+.timeline-item .year {
+  display: inline-block;
+  padding: 4px 16px;
+  border-radius: 999px;
+  background: var(--bg-surface);
+  border: 1px solid var(--line-dark);
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  color: var(--accent-secondary);
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+.timeline-item h3 {
+  font-family: var(--serif);
+  font-size: 1.55rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.timeline-item p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+.belief-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+  margin-top: 36px;
+}
+.belief-card {
+  padding: 32px 30px;
+  border-radius: 42px 20px 42px 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--card-shadow);
+}
+.belief-card span {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 1px solid var(--line-dark);
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  color: var(--accent-secondary);
+  margin-bottom: 12px;
+}
+.belief-card h3 {
+  font-family: var(--serif);
+  font-size: 1.65rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.belief-card p {
+  color: var(--text-secondary);
+}
+
+.giving-note {
+  margin-top: 38px;
+  padding: 28px 34px;
+  border-radius: 36px;
+  background: var(--bg-surface);
+  border: 1px solid var(--line-strong);
+  color: var(--text-primary);
+  font-size: 0.96rem;
+  box-shadow: var(--card-shadow);
+}
+
+/* ==========================================================================
+   SCULPTED SANCTUARY FOOTER & WORDMARK MONUMENT
+   ========================================================================== */
+.footer {
+  width: min(1460px, calc(100vw - 24px));
+  margin: 0 auto 20px;
+  border-radius: 52px;
+  background: var(--obsidian-bg);
+  color: var(--obsidian-text);
+  border: 1px solid rgba(236, 234, 229, 0.14);
+  box-shadow: 0 28px 70px -24px rgba(18, 19, 22, 0.55);
+  overflow: hidden;
+}
+
+.footer-top {
+  border-bottom: 1px solid rgba(236, 234, 229, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 24px 0;
+}
+.footer-top-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.footer-top-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.footer-seal-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(224, 122, 95, 0.4);
+  background: rgba(224, 122, 95, 0.12);
+  color: var(--obsidian-accent);
+  display: grid;
+  place-items: center;
+}
+.footer-top-kicker {
+  display: block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--obsidian-accent);
+}
+.footer-top-brand strong {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.footer-top-verse {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: rgba(236, 234, 229, 0.82);
+  max-width: 48ch;
+}
+.footer-top-verse span {
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--obsidian-sage);
+  margin-left: 6px;
+}
+
+.footer-backtop-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px 9px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(236, 234, 229, 0.22);
+  background: rgba(255, 255, 255, 0.05);
+  color: #ECEAE5;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.2s ease;
+}
+.footer-backtop-btn:hover {
+  border-color: var(--obsidian-accent);
+  background: rgba(224, 122, 95, 0.16);
+  transform: translateY(-2px);
+}
+.footer-backtop-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(236, 234, 229, 0.12);
+  display: inline-grid;
+  place-items: center;
+}
+
+.footer-body {
+  padding: clamp(64px, 8vw, 108px) 0 38px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 1fr 1.25fr;
+  gap: clamp(28px, 4vw, 52px);
+  padding-bottom: 58px;
+  border-bottom: 1px solid rgba(236, 234, 229, 0.1);
+}
+.footer-label {
+  display: block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.04rem;
+  font-weight: 500;
+  color: var(--obsidian-accent);
+  margin-bottom: 18px;
+}
+.footer-nav-list,
+.footer-schedule-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+.footer-nav-list a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 6px 0;
+  font-size: 0.9rem;
+  color: rgba(236, 234, 229, 0.82);
+  border-bottom: 1px solid rgba(236, 234, 229, 0.06);
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+.footer-nav-list a:hover {
+  color: #FFFFFF;
+  padding-left: 6px;
+}
+.footer-nav-list small {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: rgba(108, 148, 122, 0.18);
+  color: var(--obsidian-sage);
+}
+
+.footer-schedule-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(236, 234, 229, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.footer-schedule-list strong {
+  font-size: 0.92rem;
+  color: #ECEAE5;
+}
+.footer-schedule-list span {
+  font-size: 0.78rem;
+  color: var(--obsidian-muted);
+}
+
+.footer-message {
+  font-family: var(--serif);
+  font-size: 2.05rem;
+  line-height: 1.08;
+  margin-bottom: 10px;
+}
+.footer-message em {
+  color: var(--obsidian-accent);
+}
+.footer-subcopy {
+  font-size: 0.88rem;
+  color: var(--obsidian-muted);
+  margin-bottom: 20px;
+}
+.footer-socials {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+.footer-socials a {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(236, 234, 229, 0.16);
+  background: rgba(255, 255, 255, 0.03);
+  display: grid;
+  place-items: center;
+  color: #ECEAE5;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+.footer-socials a:hover {
+  border-color: var(--obsidian-accent);
+  background: rgba(224, 122, 95, 0.16);
+  color: var(--obsidian-accent);
+}
+
+/* Sanctuary Wordmark Monument ("YASHUA POWER") */
+.footer-wordmark-monument {
+  margin: 48px 0 34px;
+  padding: 32px clamp(20px, 3.5vw, 44px);
+  border-radius: 40px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    rgba(224, 122, 95, 0.07) 100%
+  );
+  border: 1px solid rgba(236, 234, 229, 0.14);
+}
+.wm-ruler {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--obsidian-muted);
+  margin-bottom: 18px;
+}
+.wm-ruler-ticks {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(236, 234, 229, 0.22),
+    transparent
+  );
+}
+
+.footer-wordmark {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(10px, 2vw, 26px);
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 9.2vw, 8.2rem);
+  font-weight: 600;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  user-select: none;
+}
+.wm-word {
+  display: inline-flex;
+}
+.wm-char {
+  display: inline-block;
+  overflow: hidden;
+  padding-block: 4px;
+}
+.wm-char-inner {
+  display: inline-block;
+  will-change: transform;
+}
+.wm-word-solid .wm-char-inner {
+  color: #ECEAE5;
+}
+.wm-word-outline .wm-char-inner {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(224, 122, 95, 0.88);
+}
+.wm-word-outline .wm-char:hover .wm-char-inner {
+  color: var(--obsidian-accent);
+}
+
+.wm-center-seal {
+  width: clamp(38px, 5.2vw, 66px);
+  height: clamp(40px, 5.5vw, 70px);
+  color: rgba(236, 234, 229, 0.65);
+  flex-shrink: 0;
+  display: inline-grid;
+  place-items: center;
+}
+.wm-center-seal svg {
+  width: 100%;
+  height: 100%;
+}
+
+.wm-subbanner {
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(236, 234, 229, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--obsidian-sage);
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.8rem;
+  color: var(--obsidian-muted);
+}
+
+/* ==========================================================================
+   RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 1220px) {
+  .nav-cta {
+    display: none;
+  }
+}
+
+@media (max-width: 1060px) {
+  .nav-links {
+    display: none;
+  }
+  .hero-main-grid,
+  .rhythm-layout,
+  .feature-sermon,
+  .lead-grid,
+  .visit-faq,
+  .testimony-header-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-bar-inner,
+  .pillars-grid,
+  .timeline {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .visit-steps,
+  .testimony-grid,
+  .ministry-grid,
+  .about-stat-strip {
+    grid-template-columns: 1fr;
+  }
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .hero,
+  .page-hero {
+    border-radius: 0 0 36px 36px;
+  }
+  .hero {
+    padding: 104px 0 24px;
+  }
+  .about-preview,
+  .rhythm,
+  .sermons-showcase,
+  .live-banner,
+  .visit,
+  .ministries-preview,
+  .final-cta,
+  .footer {
+    border-radius: 34px;
+  }
+  .hero-bar-inner,
+  .pillars-grid,
+  .timeline,
+  .belief-grid,
+  .footer-grid,
+  .lead-facts {
+    grid-template-columns: 1fr;
+  }
+  .brand-wordmark-right,
+  .brand-lockup-divider {
+    display: none;
+  }
+  .theme-switch-label {
+    display: none;
+  }
+  .theme-switch-btn {
+    padding: 5px;
+  }
+  .visit-faq-answer-inner p,
+  .rhythm-detail-inner {
+    padding-left: 24px;
+  }
+  .footer-wordmark {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
