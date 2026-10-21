@@ -1,0 +1,1101 @@
+/* Sermon detail templates only. Everything is composed from the existing brand tokens. */
+.sermonContainer {
+  width: min(100% - 64px, 1300px);
+  margin-inline: auto;
+}
+.divinePage {
+  background: var(--pure-white);
+  color: var(--rich-black);
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 9px 18px;
+  border-radius: 999px;
+  background: rgba(236, 234, 229, 0.14);
+  border: 1px solid rgba(236, 234, 229, 0.28);
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+.backLink:hover {
+  color: var(--antique-gold);
+  border-color: var(--antique-gold);
+}
+.divineHero {
+  position: relative;
+  width: min(1460px, calc(100vw - 24px));
+  margin: 10px auto 0;
+  min-height: min(82vh, 790px);
+  display: flex;
+  align-items: end;
+  border-radius: 44px 44px 60px 60px;
+  border: 1px solid rgba(236, 234, 229, 0.16);
+  overflow: hidden;
+  background: #121316;
+  color: #ECEAE5;
+}
+.divineHeroImage {
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.6);
+}
+.divineHero:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, #121316, transparent 95%);
+  pointer-events: none;
+}
+.divineHero > .sermonContainer {
+  position: relative;
+  z-index: 1;
+  padding-block: 50px 155px;
+}
+.heroKicker,
+.schoolKicker,
+.sectionLabel,
+.smallCaps {
+  display: block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.heroKicker {
+  color: var(--antique-gold);
+  margin-top: clamp(100px, 12vh, 160px);
+}
+.divineHero h1 {
+  font: 500 clamp(53px, 8.3vw, 126px) / 1.02 var(--font-serif);
+  letter-spacing: -0.07em;
+  max-width: 1050px;
+  margin: 22px 0;
+  text-wrap: balance;
+}
+.divineHero p {
+  max-width: 530px;
+  font-size: 15px;
+  line-height: 1.85;
+}
+.heroBottom {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 60px;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  font-weight: 800;
+}
+.heroBottom span {
+  color: var(--antique-gold);
+  font-size: 19px;
+}
+.divinePlayerWrap {
+  position: relative;
+  z-index: 2;
+  margin-top: -92px;
+}
+.listeningStage {
+  background: #1A1C23;
+  color: #ECEAE5;
+  border: 1px solid rgba(224, 122, 95, 0.45);
+  border-radius: 40px;
+  padding: clamp(26px, 4vw, 55px);
+  box-shadow: 0 28px 55px rgba(0, 0, 0, 0.28);
+}
+.listeningTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid rgba(236, 234, 229, 0.16);
+  padding-bottom: 19px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #E07A5F;
+}
+.listeningBody {
+  display: flex;
+  gap: clamp(22px, 4vw, 60px);
+  align-items: center;
+  padding-block: 35px 25px;
+}
+.listenMark {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: clamp(85px, 13vw, 168px);
+  height: clamp(85px, 13vw, 168px);
+  border: 1px solid var(--antique-gold);
+  border-radius: 50%;
+  font-size: clamp(50px, 8vw, 98px);
+  line-height: 1;
+  color: var(--antique-gold);
+}
+.smallCaps {
+  color: var(--antique-gold);
+}
+.listeningInfo h2 {
+  font: 500 clamp(32px, 4.4vw, 68px) / 1.12 var(--font-serif);
+  letter-spacing: -0.055em;
+  margin: 14px 0;
+  max-width: 850px;
+}
+.listeningInfo > p:last-child {
+  color: var(--muted-stone);
+  font-size: 12px;
+}
+.listeningInfo > p:last-child span {
+  color: var(--antique-gold);
+  padding-inline: 10px;
+}
+.hiddenAudio {
+  display: none;
+}
+.recordingPending {
+  padding: 18px 0 0;
+  margin: 0;
+  border-top: 1px solid rgba(236, 234, 229, 0.2);
+  color: #ECEAE5;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.playerControls {
+  border-top: 1px solid rgba(236, 234, 229, 0.2);
+  padding-top: 28px;
+}
+.waveformWrap {
+  position: relative;
+  height: 72px;
+}
+.waveform {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(64, minmax(0, 1fr));
+  align-items: center;
+  gap: 2px;
+  pointer-events: none;
+}
+.waveform span {
+  display: block;
+  width: 100%;
+  min-height: 5px;
+  border-radius: 5px;
+  background: var(--muted-stone);
+  opacity: 0.65;
+  transition:
+    background 0.15s,
+    opacity 0.15s;
+}
+.waveform span.wavePlayed {
+  background: var(--antique-gold);
+  opacity: 1;
+}
+.waveSeek {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.waveSeek:disabled {
+  cursor: not-allowed;
+}
+.waveformWrap:focus-within {
+  outline: 3px solid var(--antique-gold);
+  outline-offset: 5px;
+}
+.audioTimes {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--muted-stone);
+  font-size: 11px;
+  margin-top: 7px;
+}
+.audioActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+  margin-top: 20px;
+}
+.transport,
+.audioExtras {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 2vw, 26px);
+}
+.transport button,
+.audioExtras button,
+.audioExtras a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 0;
+  background: none;
+  color: #ECEAE5;
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.transport button:not(.bigPlay) {
+  flex-direction: column;
+  gap: 0;
+}
+.transport button span {
+  font-size: 9px;
+}
+.transport .bigPlay {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  background: #C85A32;
+  color: #F8F6F0;
+}
+.transport button:hover,
+.audioExtras button:hover,
+.audioExtras a:hover {
+  color: #E07A5F;
+}
+.transport .bigPlay:hover {
+  color: #FFFFFF;
+  background: #B04A26;
+}
+.audioExtras a {
+  border-bottom: 1px solid var(--antique-gold);
+}
+.audioError {
+  color: var(--antique-gold);
+  font-size: 12px;
+}
+.compactPlayer {
+  position: fixed;
+  z-index: 80;
+  right: 20px;
+  bottom: 20px;
+  width: min(430px, calc(100vw - 40px));
+  background: #1A1C23;
+  color: #ECEAE5;
+  box-shadow: 0 14px 55px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(224, 122, 95, 0.45);
+  border-radius: 22px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.compactPlayer button {
+  border: 1px solid var(--antique-gold);
+  background: none;
+  color: var(--antique-gold);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+.compactPlayer > div {
+  flex: 1;
+  min-width: 0;
+}
+.compactPlayer strong {
+  font: 500 17px/1.2 var(--font-serif);
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.compactPlayer > div > span {
+  color: var(--muted-stone);
+  font-size: 10px;
+}
+.compactProgress {
+  height: 2px;
+  background: var(--muted-stone);
+  margin-top: 5px;
+}
+.compactProgress span {
+  display: block;
+  height: 100%;
+  background: var(--antique-gold);
+}
+.divineWriteup {
+  display: grid;
+  grid-template-columns: minmax(180px, 250px) minmax(0, 760px);
+  gap: clamp(40px, 8vw, 130px);
+  padding-block: clamp(90px, 10vw, 150px);
+}
+.divineSide {
+  align-self: start;
+  position: sticky;
+  top: 110px;
+}
+.sectionLabel {
+  color: var(--rich-black);
+}
+.divineSide ol {
+  list-style: none;
+  padding: 0;
+  margin: 25px 0 55px;
+}
+.divineSide li {
+  border-top: 1px solid var(--muted-stone);
+  padding: 16px 0;
+}
+.divineSide li a {
+  display: flex;
+  gap: 12px;
+  align-items: start;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.divineSide li span {
+  color: var(--deep-amber);
+  font-weight: 800;
+  font-size: 11px;
+}
+.referenceList {
+  display: grid;
+  gap: 8px;
+  margin-top: 17px;
+}
+.referenceList button,
+.studyReferences button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 9px;
+  width: 100%;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--bg-surface);
+  color: var(--rich-black);
+  text-align: left;
+  padding: 11px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+.referenceList button:hover,
+.studyReferences button:hover {
+  border-color: var(--deep-amber);
+  color: var(--deep-amber);
+}
+.articlePrelude {
+  border-left: 3px solid var(--antique-gold);
+  padding: 5px 0 5px 24px;
+  margin-bottom: 65px;
+}
+.articlePrelude p {
+  font: 400 clamp(18px, 2vw, 26px) / 1.6 var(--font-serif);
+  margin: 14px 0 0;
+}
+.divineArticle {
+  min-width: 0;
+}
+.divineSection {
+  border-top: 1px solid var(--muted-stone);
+  padding: 47px 0 55px;
+  scroll-margin-top: 100px;
+}
+.sectionNumber,
+.studyNumber {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--rich-black);
+}
+.divineSection h2 {
+  font: 500 clamp(35px, 4vw, 59px) / 1.2 var(--font-serif);
+  letter-spacing: -0.05em;
+  margin: 15px 0 26px;
+}
+.divineSection p {
+  font-size: 16px;
+  line-height: 1.95;
+  max-width: 66ch;
+}
+.refLink {
+  display: inline;
+  border: 0;
+  border-bottom: 2px solid var(--deep-amber);
+  padding: 0 1px 2px;
+  background: none;
+  color: var(--rich-black);
+  font-weight: 800;
+  cursor: pointer;
+  text-align: left;
+}
+.refLink:hover {
+  background: var(--antique-gold);
+}
+.divineClosing {
+  background: var(--bone-white);
+  border-radius: 36px;
+  border: 1px solid var(--line-strong);
+  padding: 34px;
+  margin-top: 20px;
+}
+.divineClosing > span {
+  color: var(--deep-amber);
+  font-size: 38px;
+}
+.divineClosing p {
+  font: 400 22px/1.5 var(--font-serif);
+}
+.divineClosing a,
+.studyEnding a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  border-radius: 999px;
+  background: var(--accent-primary);
+  color: #F8F6F0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 10px 20px;
+  margin-top: 12px;
+}
+/* Sabbath School: light, reading-first, and intentionally unlike the listening room. */
+.schoolPage {
+  background: var(--bone-white);
+  color: var(--rich-black);
+  padding-block: clamp(45px, 5vw, 85px) 110px;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+.schoolHero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
+  gap: clamp(30px, 6vw, 95px);
+  align-items: end;
+  border-bottom: 1px solid var(--muted-stone);
+  padding-bottom: 65px;
+}
+.schoolIntro {
+  padding-block: 15px;
+}
+.schoolKicker {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: var(--rich-black);
+  margin-top: clamp(55px, 9vw, 125px);
+}
+.schoolHero h1 {
+  font: 500 clamp(50px, 7vw, 98px) / 1.08 var(--font-serif);
+  letter-spacing: -0.065em;
+  margin: 18px 0;
+  text-wrap: balance;
+}
+.schoolHero p {
+  max-width: 600px;
+  font-size: 16px;
+  line-height: 1.85;
+}
+.schoolDate {
+  display: block;
+  margin-top: 20px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--deep-amber);
+}
+.schoolNote {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  font-weight: 800;
+  margin-top: 36px;
+}
+.schoolNote span {
+  color: var(--deep-amber);
+  margin-inline: 9px;
+}
+.schoolImage {
+  position: relative;
+  min-height: clamp(380px, 44vw, 580px);
+  overflow: hidden;
+  border-radius: 220px 220px 38px 38px;
+  border: 1px solid var(--line-strong);
+}
+.schoolImage img {
+  object-fit: cover;
+}
+.schoolBody {
+  display: grid;
+  grid-template-columns: minmax(185px, 275px) minmax(0, 720px);
+  gap: clamp(40px, 8vw, 120px);
+  padding-top: 80px;
+}
+.studyIndex {
+  align-self: start;
+  position: sticky;
+  top: 110px;
+  border-top: 2px solid var(--rich-black);
+  padding-top: 22px;
+}
+.studyIndex nav {
+  display: grid;
+  margin: 25px 0 50px;
+}
+.studyIndex nav a {
+  border-top: 1px solid var(--muted-stone);
+  padding: 15px 0;
+  display: flex;
+  gap: 13px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.studyIndex nav a span {
+  color: var(--deep-amber);
+  font-weight: 800;
+  font-size: 11px;
+}
+.studyReferences {
+  display: grid;
+  gap: 9px;
+}
+.studyReferences .sectionLabel {
+  margin-bottom: 8px;
+}
+.studyReading {
+  max-width: 720px;
+}
+.readingLead {
+  border-bottom: 1px solid var(--muted-stone);
+  padding-bottom: 60px;
+}
+.readingLead p {
+  font: 400 clamp(21px, 2.5vw, 32px) / 1.55 var(--font-serif);
+  letter-spacing: -0.025em;
+}
+.studySection {
+  scroll-margin-top: 110px;
+  border-bottom: 1px solid var(--muted-stone);
+  padding-block: 60px;
+}
+.studySection h2 {
+  font: 500 clamp(38px, 4vw, 59px) / 1.18 var(--font-serif);
+  letter-spacing: -0.05em;
+  margin: 16px 0 25px;
+}
+.studySection > p {
+  font-size: 16px;
+  line-height: 1.95;
+  max-width: 65ch;
+}
+.studyPrompt {
+  background: var(--pure-white);
+  border-left: 4px solid var(--antique-gold);
+  border-radius: 16px 32px 32px 16px;
+  padding: 22px 28px;
+  margin-top: 34px;
+}
+.studyPrompt span {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.17em;
+  color: var(--rich-black);
+}
+.studyPrompt p {
+  font-size: 14px;
+  line-height: 1.75;
+  margin-bottom: 0;
+}
+.studyEnding {
+  padding-top: 40px;
+}
+.studyEnding svg {
+  color: var(--deep-amber);
+}
+.studyEnding p {
+  font: 400 24px/1.5 var(--font-serif);
+  max-width: 540px;
+}
+/* One Bible module shared by both page identities. Non-modal; no backdrop or scroll lock. */
+.bibleTrigger {
+  position: fixed;
+  z-index: 90;
+  bottom: 22px;
+  right: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(255, 250, 240, 0.28);
+  border-radius: 999px;
+  padding: 13px 22px;
+  background: linear-gradient(135deg, #3B5848 0%, #2B4236 100%);
+  color: #F8F6F0;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 12px 28px rgba(28, 26, 24, 0.28);
+  cursor: pointer;
+}
+.bibleTrigger:hover {
+  background: linear-gradient(135deg, #B04A26 0%, #923819 100%);
+}
+/* The global gold ring is invisible on the gold trigger. */
+.bibleTrigger:focus-visible {
+  outline: 3px solid var(--rich-black);
+  outline-offset: 3px;
+}
+.bibleClearPlayer {
+  bottom: 130px;
+}
+.biblePanel {
+  position: fixed;
+  /* Clears the 32px announcement bar plus the 84px header at page top. */
+  top: 108px;
+  bottom: 20px;
+  right: 20px;
+  width: min(430px, calc(100vw - 40px));
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  background: var(--bone-white);
+  color: var(--rich-black);
+  border: 1px solid var(--line-strong);
+  border-radius: 26px;
+  overflow: hidden;
+  box-shadow: 0 24px 65px rgba(0, 0, 0, 0.28);
+}
+.bibleHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 20px;
+  padding: 26px 26px 16px;
+}
+.bibleKicker {
+  font-size: 9px;
+  color: var(--rich-black);
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.bibleHeader h2 {
+  font: 500 37px/1.1 var(--font-serif);
+  letter-spacing: -0.05em;
+  margin: 9px 0 0;
+}
+.iconButton {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  flex: none;
+  background: none;
+  color: var(--rich-black);
+  border: 1px solid var(--rich-black);
+  border-radius: 50%;
+}
+.bibleSearch {
+  padding: 0 26px 17px;
+}
+.bibleSearch label,
+.translation legend {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+.bibleSearch > div {
+  display: flex;
+  border: 1px solid var(--muted-stone);
+  background: var(--pure-white);
+}
+.bibleSearch input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  background: none;
+  padding: 13px;
+  font-size: 14px;
+}
+.bibleSearch button {
+  width: 49px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-left: 1px solid var(--muted-stone);
+  background: var(--antique-gold);
+  flex: none;
+}
+.translation {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  margin: 0;
+  border: 0;
+  padding: 0 26px 18px;
+}
+.translation legend {
+  float: left;
+  margin-right: 16px;
+  padding-top: 6px;
+}
+.translation label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.translation input {
+  accent-color: var(--deep-amber);
+}
+.chapterControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-block: 1px solid var(--muted-stone);
+  padding: 10px 20px;
+  gap: 8px;
+}
+.chapterControls button {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  border: 0;
+  background: none;
+  padding: 7px 0;
+  font-size: 11px;
+  font-weight: 800;
+}
+.chapterControls button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.chapterControls span {
+  font: 500 15px/1.2 var(--font-serif);
+  text-align: center;
+}
+.bibleReading {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 100px;
+  padding: 20px 26px 30px;
+  overscroll-behavior: contain;
+}
+.bibleReading h3 {
+  font: 500 30px/1.2 var(--font-serif);
+  margin: 0 0 20px;
+}
+.bibleMessage {
+  font-size: 13px;
+  line-height: 1.8;
+}
+.bibleMessage button {
+  border: 1px solid var(--rich-black);
+  padding: 9px 14px;
+  background: none;
+  font-size: 11px;
+  font-weight: 800;
+}
+.verses {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.verses li {
+  display: flex;
+  align-items: baseline;
+  gap: 13px;
+  padding: 7px 0;
+  font: 400 16px/1.75 var(--font-serif);
+}
+.verses sup {
+  color: var(--rich-black);
+  font: 800 10px/1 var(--font-sans);
+  min-width: 20px;
+}
+.bibleAttribution {
+  border-top: 1px solid var(--muted-stone);
+  padding: 10px 26px;
+  margin: 0;
+  font-size: 10px;
+}
+/* Existing global focus token is kept, with an extra bright focus for the dark player. */
+.listeningStage :focus-visible,
+.compactPlayer :focus-visible {
+  outline: 3px solid var(--antique-gold);
+  outline-offset: 3px;
+}
+@media (max-width: 900px) {
+  .schoolHero {
+    grid-template-columns: 1fr;
+  }
+  .schoolKicker {
+    margin-top: 55px;
+  }
+  .schoolImage {
+    min-height: 360px;
+  }
+  .divineWriteup,
+  .schoolBody {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .divineSide,
+  .studyIndex {
+    position: static;
+  }
+  .divineSide ol,
+  .studyIndex nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 25px;
+    margin-bottom: 28px;
+  }
+  .studyReferences,
+  .referenceList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 650px) {
+  .sermonContainer {
+    width: min(100% - 36px, 1300px);
+  }
+  .divineHero {
+    min-height: 600px;
+  }
+  .divineHero > .sermonContainer {
+    padding-bottom: 110px;
+  }
+  .divineHero h1 {
+    font-size: clamp(49px, 11.5vw, 72px);
+  }
+  .heroKicker {
+    margin-top: 90px;
+  }
+  .heroBottom {
+    font-size: 8px;
+    line-height: 1.5;
+    flex-wrap: wrap;
+  }
+  .divinePlayerWrap {
+    margin-top: -55px;
+  }
+  .listeningStage {
+    padding: 22px;
+  }
+  .listeningTop {
+    font-size: 8px;
+  }
+  .listeningTop span:last-child {
+    display: none;
+  }
+  .listeningBody {
+    gap: 16px;
+  }
+  .listenMark {
+    width: 64px;
+    height: 64px;
+    font-size: 45px;
+  }
+  .listeningInfo h2 {
+    font-size: clamp(26px, 8vw, 40px);
+  }
+  .waveformWrap {
+    height: 58px;
+  }
+  .waveform {
+    gap: 1px;
+  }
+  .audioActions {
+    flex-wrap: wrap;
+  }
+  .audioExtras {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .divineWriteup {
+    padding-block: 80px;
+  }
+  .divineSide ol,
+  .studyIndex nav {
+    grid-template-columns: 1fr;
+  }
+  .studyReferences,
+  .referenceList {
+    grid-template-columns: 1fr;
+  }
+  .schoolPage {
+    padding-top: 45px;
+  }
+  .schoolHero {
+    padding-bottom: 35px;
+  }
+  .schoolHero h1 {
+    font-size: clamp(48px, 11.5vw, 74px);
+  }
+  .schoolImage {
+    min-height: 300px;
+  }
+  .schoolBody {
+    padding-top: 55px;
+  }
+  .bibleTrigger {
+    right: 16px;
+    bottom: calc(16px + env(safe-area-inset-bottom));
+    padding: 13px 16px;
+  }
+  .bibleClearPlayer {
+    bottom: calc(102px + env(safe-area-inset-bottom));
+  }
+  .biblePanel {
+    top: auto;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-height: min(78dvh, 710px);
+    border-radius: 18px 18px 0 0;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .bibleHeader {
+    padding: 21px 18px 12px;
+  }
+  .bibleSearch {
+    padding: 0 18px 12px;
+  }
+  .translation {
+    padding: 0 18px 12px;
+  }
+  .chapterControls {
+    padding: 8px 12px;
+  }
+  .bibleReading {
+    padding: 17px 18px 25px;
+  }
+  .bibleAttribution {
+    padding: 10px 18px;
+  }
+  .compactPlayer {
+    left: 0;
+    right: 0;
+    width: 100%;
+    bottom: 0;
+    padding: 10px 15px calc(10px + env(safe-area-inset-bottom));
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .waveform span {
+    transition: none;
+  }
+}
+
+/* Visible focus on the light reading surface as well as on the dark listening stage. */
+.biblePanel :focus-visible,
+.schoolPage :focus-visible,
+.divineWriteup :focus-visible {
+  outline: 3px solid var(--rich-black);
+  outline-offset: 3px;
+}
+
+/* Studio-created content and draft previews. */
+.heroDate {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 22px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--antique-gold);
+}
+.localAudioNote {
+  margin: 14px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid color-mix(in srgb, var(--pure-white) 18%, transparent);
+  color: var(--muted-stone);
+  font-size: 11px;
+  line-height: 1.6;
+}
+.draftRibbon {
+  position: fixed;
+  z-index: 120;
+  left: 50%;
+  top: calc(128px + env(safe-area-inset-top));
+  bottom: auto;
+  transform: translateX(-50%);
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--rich-black);
+  color: var(--pure-white);
+  border: 1px solid var(--antique-gold);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  max-width: calc(100vw - 24px);
+  text-align: center;
+  box-shadow: 0 12px 32px color-mix(in srgb, var(--rich-black) 35%, transparent);
+}
+.missingPage {
+  min-height: 70vh;
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: 14px;
+  padding-block: 120px;
+}
+.missingMark {
+  font-size: 46px;
+  line-height: 1;
+  color: var(--deep-amber);
+}
+.missingPage h1 {
+  font: 500 clamp(36px, 5.6vw, 68px) / 1.06 var(--font-serif);
+  letter-spacing: -0.055em;
+  margin: 0;
+  max-width: 780px;
+  text-wrap: balance;
+}
+.missingPage p {
+  font-size: 15px;
+  line-height: 1.8;
+  max-width: 520px;
+  margin: 0;
+}
+.missingLoading {
+  font-size: 13px;
+  color: var(--rich-black);
+}
+.missingLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 8px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+@media (max-width: 650px) {
+  .draftRibbon {
+    top: calc(82px + env(safe-area-inset-top));
+    bottom: auto;
+    font-size: 10px;
+    padding: 9px 13px;
+  }
+}
